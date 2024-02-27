@@ -2,7 +2,7 @@
 # Heart Disease Prediction Model
 
 ## Overview
-Notebook link:https://drive.google.com/file/d/1ZSlLH41B8UK_vaV_fxagucHNxVp8ALJK/view?usp=sharing
+Notebook link:https:https://colab.research.google.com/drive/1OXOS1ZGL5kLBcLIOcyxJdXxIW4BQuOYN?usp=sharing
 This project aims to develop a machine learning model for predicting heart disease using classification techniques. The model will be trained on a publicly available dataset and optimized using various techniques to improve its performance, convergence speed, and efficiency.
 
 ## Dataset

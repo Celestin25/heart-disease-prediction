@@ -22,7 +22,7 @@ This app leverages a Machine Learning (ML) model to predict heart disease based 
 1. **README.md**: Provides detailed instructions for setting up and running the project.
 2. **Model Files**: Includes Jupyter notebooks (`heart_disease_prediction.ipynb`) and Python scripts (`models.py`, `predictions.py`), detailing the model's development and deployment.
 3. **Deployment Files**: Contains all necessary configurations for deploying the model on a cloud platform.
-4. **URL**: Link to the deployed app ().
+4. **URL**: Link to the deployed app (https://heart-disease-prediction-vpfrju28z6dlmfxymaeg9q.streamlit.app/).
 
 ## Deployment
 

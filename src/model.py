@@ -6,7 +6,7 @@ from sklearn.metrics import classification_report, accuracy_score, roc_auc_score
 import joblib
 import pandas as pd
 
-def load_data(filepath='data/heart.csv'):
+def load_data(filepath='saved_models/heart_disease_model.pkl'):
     df = pd.read_csv(filepath)
     X = df.drop('target', axis=1).values 
     y = df['target'].values

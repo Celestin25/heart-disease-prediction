@@ -5,7 +5,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 import joblib
 
-def load_data(filepath='data/heart.csv'):
+def load_data(filepath='saved_models/heart_disease_model.pkl'):
     df = pd.read_csv(filepath)
     return df
 

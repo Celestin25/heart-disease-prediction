@@ -1,7 +1,7 @@
 import numpy as np
 import joblib
 
-def load_model(filename='data/heart.csv'):
+def load_model(filename='saved_models/heart_disease_model.pkl'):
    
     try:
         model = joblib.load(filename)

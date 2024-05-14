@@ -21,7 +21,7 @@ This project applies transfer learning techniques for detecting brain tumors fro
 - **F1 Score**
 
 ## Findings
-The ResNet-50, VGG19, and InceptionV3 models were fine-tuned for the brain tumor detection task. The performance of each model was evaluated and compared based on accuracy, loss, precision, recall, and F1 score. The results indicate that [specific findings based on your results].
+The ResNet-50, VGG19, and InceptionV3 models were fine-tuned for the brain tumor detection task. The performance of each model was evaluated and compared based on accuracy, loss, precision, recall, and F1 score. The results indicate that specific findings based on your results.
 
 ## Conclusion
-Transfer learning significantly reduced the training time and improved the performance for brain tumor detection from MRI scans. The fine-tuned models demonstrated robust performance, highlighting the effectiveness of leveraging pre-trained models for medical image analysis tasks.
+Transfer learning significantly reduced the training time and improved the performance for brain tumor detection from MRI scans. The fine-tuned models demonstrated good performance, highlighting the effectiveness of leveraging pre-trained models for medical image analysis tasks.

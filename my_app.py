@@ -89,12 +89,15 @@ elif selected == 'Health Chatbot':
         if tree_.feature[node] != _tree.TREE_UNDEFINED:
             name = feature_name[node]
             threshold = tree_.threshold[node]
-            yield name + " ?"
-            ans = ans.lower()
-            if ans == 'yes':
+            st.write(f"Do you have {name}?")
+            ans = st.text_input("Your Answer: ")
+            if ans.lower() in ["yes", "y"]:
                 val = 1
-            else:
+            elif ans.lower() in ["no", "n"]:
                 val = 0
+            else:
+                st.write("Please respond with 'yes' or 'no'.")
+                return
             if val <= threshold:
                 yield from recurse(tree_.children_left[node], depth + 1)
             else:
@@ -102,17 +105,17 @@ elif selected == 'Health Chatbot':
                 yield from recurse(tree_.children_right[node], depth + 1)
         else:
             present_disease = print_disease(tree_.value[node])
-            yield "You may have: " + str(present_disease)
+            st.write("You may have: " + str(present_disease))
             red_cols = dimensionality_reduction.columns
             symptoms_given = red_cols[dimensionality_reduction.loc[present_disease].values[0].nonzero()]
-            yield "Symptoms present: " + str(list(symptoms_present))
-            yield "Symptoms given: " + str(list(symptoms_given))
+            st.write("Symptoms present: " + str(list(symptoms_present)))
+            st.write("Symptoms given: " + str(list(symptoms_given)))
             confidence_level = (1.0 * len(symptoms_present)) / len(symptoms_given)
-            yield "Confidence level is: " + str(confidence_level)
-            row = doctors[doctors['disease'] == present_disease[0]]
-            yield f'Consult {str(row["name"].values)}'
-            link = str(row['link'].values[0])
-            yield f'Visit {create_hyperlink("this link", link)}'
+            st.write("Confidence level is: " + str(confidence_level))
+            row = doc_dataset[doc_dataset['Name'] == present_disease[0]]
+            st.write(f'Consult {str(row["Name"].values[0])}')
+            link = str(row['Description'].values[0])
+            st.write(f'Visit {create_hyperlink("this link", link)}')
 
     def tree_to_code(tree, feature_names):
         global tree_, feature_name, symptoms_present
@@ -133,7 +136,7 @@ elif selected == 'Health Chatbot':
     if 'iter' in st.session_state:
         try:
             query = next(st.session_state['iter'])
-            ans = st.radio(query, ['yes', 'no'])
+            st.write(query)
             if st.button('Next'):
                 st.session_state['iter'] = execute_bot()
         except StopIteration:

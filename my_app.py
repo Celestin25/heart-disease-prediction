@@ -7,6 +7,7 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
+from transformers import BertTokenizer, BertForQuestionAnswering, pipeline
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -35,13 +36,10 @@ cols = training_dataset.columns[:-1]  # Assuming all columns except the last one
 def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
 
-# Mental Health Q&A Data
-mental_health_data = {
-    "What is depression?": "Depression is a mood disorder that causes persistent feelings of sadness and loss of interest.",
-    "What are the symptoms of anxiety?": "Symptoms of anxiety include feeling nervous, restless, or tense, having an increased heart rate, and sweating.",
-    "How can I manage stress?": "Managing stress can be done through regular physical activity, relaxation techniques like deep breathing, and maintaining a healthy lifestyle.",
-    # Add more Q&A as needed
-}
+# Load and fine-tune BERT model for mental health Q&A
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForQuestionAnswering.from_pretrained('bert-base-uncased')
+qa_pipeline = pipeline('question-answering', model=model, tokenizer=tokenizer)
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
@@ -146,6 +144,7 @@ elif selected == 'Health Chatbot':
 
     if 'started' in st.session_state:
         tree_to_code(classifier, cols)
+
 
 elif selected == 'Mental Health Q&A':
     st.title('Mental Health Chatbot')

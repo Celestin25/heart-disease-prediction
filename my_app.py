@@ -152,7 +152,8 @@ elif selected == 'Mental Health Q&A':
     st.write("Ask me anything about mental health!")
 
     query = st.text_input("Your Question:")
+    submit_button = st.form_submit_button(label='Submit')
 
-    if query:
+    if query and submit_button:
         response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Please consult a professional.")
         st.write(response)

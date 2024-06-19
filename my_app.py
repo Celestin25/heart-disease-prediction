@@ -78,6 +78,10 @@ elif selected == 'Health Chatbot':
     st.title('Health Chatbot for Disease Diagnosis')
     st.write("Hey, I am HealthChatbot that can help you to know your disease. How may I help you today?")
 
+    if 'current_node' not in st.session_state:
+        st.session_state.current_node = 0
+        st.session_state.symptoms_present = []
+
     def print_disease(node):
         node = node[0]
         val = node.nonzero()
@@ -85,32 +89,27 @@ elif selected == 'Health Chatbot':
         return disease
 
     def recurse(node, depth):
-        global val, ans, tree_, feature_name, symptoms_present
+        global tree_, feature_name
         if tree_.feature[node] != _tree.TREE_UNDEFINED:
             name = feature_name[node]
             threshold = tree_.threshold[node]
             st.write(f"Do you have {name}?")
-            ans = st.text_input("Your Answer:", key=str(depth))
-            if ans.lower() in ["yes", "y"]:
-                val = 1
-            elif ans.lower() in ["no", "n"]:
-                val = 0
-            else:
-                st.write("Please respond with 'yes' or 'no'.")
-                return
-            if val <= threshold:
-                yield from recurse(tree_.children_left[node], depth + 1)
-            else:
-                symptoms_present.append(name)
-                yield from recurse(tree_.children_right[node], depth + 1)
+            ans = st.radio("Your Answer:", ["yes", "no"], key=f"answer_{depth}")
+            if st.button('Next'):
+                if ans == "yes":
+                    st.session_state.symptoms_present.append(name)
+                    next_node = tree_.children_right[node]
+                else:
+                    next_node = tree_.children_left[node]
+                st.session_state.current_node = next_node
         else:
             present_disease = print_disease(tree_.value[node])
             st.write("You may have: " + str(present_disease))
             red_cols = dimensionality_reduction.columns
             symptoms_given = red_cols[dimensionality_reduction.loc[present_disease].values[0].nonzero()]
-            st.write("Symptoms present: " + str(list(symptoms_present)))
+            st.write("Symptoms present: " + str(list(st.session_state.symptoms_present)))
             st.write("Symptoms given: " + str(list(symptoms_given)))
-            confidence_level = (1.0 * len(symptoms_present)) / len(symptoms_given)
+            confidence_level = (1.0 * len(st.session_state.symptoms_present)) / len(symptoms_given)
             st.write("Confidence level is: " + str(confidence_level))
             row = doc_dataset[doc_dataset['Name'] == present_disease[0]]
             st.write(f'Consult {str(row["Name"].values[0])}')
@@ -118,28 +117,15 @@ elif selected == 'Health Chatbot':
             st.write(f'Visit {create_hyperlink("this link", link)}')
 
     def tree_to_code(tree, feature_names):
-        global tree_, feature_name, symptoms_present
+        global tree_, feature_name
         tree_ = tree.tree_
         feature_name = [feature_names[i] if i != _tree.TREE_UNDEFINED else "undefined!" for i in tree_.feature]
-        symptoms_present = []
-        return recurse(0, 1)
-
-    def execute_bot():
-        return tree_to_code(classifier, cols)
+        return recurse(st.session_state.current_node, 1)
 
     if st.button('Start Chatbot'):
-        try:
-            st.session_state['iter'] = execute_bot()
-        except Exception as e:
-            st.error(f"Error starting chatbot: {e}")
+        st.session_state.current_node = 0
+        st.session_state.symptoms_present = []
+        st.session_state.started = True
 
-    if 'iter' in st.session_state:
-        try:
-            query = next(st.session_state['iter'])
-            st.write(query)
-            if st.button('Next'):
-                st.session_state['iter'] = execute_bot()
-        except StopIteration:
-            st.success("Diagnosis completed.")
-        except Exception as e:
-            st.error(f"Error during diagnosis: {e}")
+    if 'started' in st.session_state:
+        tree_to_code(classifier, cols)

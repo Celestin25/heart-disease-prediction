@@ -89,7 +89,7 @@ elif selected == 'Health Chatbot':
             name = feature_name[node]
             threshold = tree_.threshold[node]
             st.write(f"Do you have {name}?")
-            ans = st.text_area("Your Answer: ")
+            ans = st.text_input("Your Answer:", key=str(depth))
             if ans.lower() in ["yes", "y"]:
                 val = 1
             elif ans.lower() in ["no", "n"]:

@@ -29,6 +29,9 @@ from sklearn.tree import DecisionTreeClassifier
 classifier = DecisionTreeClassifier()
 classifier.fit(X, y)
 
+# Define `cols`
+cols = training_dataset.columns[:-1]  # Assuming all columns except the last one are features
+
 # Helper function for hyperlink
 def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
@@ -55,7 +58,7 @@ if selected == 'Heart Disease Prediction':
         sex = st.selectbox('Sex', options=[0, 1], format_func=lambda x: {0: "Female", 1: "Male"}[x])
         chol = st.number_input('Serum Cholestoral (mg/dl)', min_value=100, max_value=700)
         thalach = st.number_input('Maximum Heart Rate Achieved', min_value=60, max_value=250)
-        slope = st.selectbox('Slope of the Peak Exercise ST Segment', options=[0, 1, 2], format_func=lambda x: {0: "Upsloping", 1: "Flat", 2: "Downsloping"})
+        slope = st.selectbox('Slope of the Peak Exercise ST Segment', options=[0, 1, 2], format_func=lambda x: {0: "Upsloping", 1: "Flat", 2: "Downsloping"}[x])
 
     with col3:
         cp = st.selectbox('Chest Pain Type', options=[0, 1, 2, 3], format_func=lambda x: {0: "Typical Angina", 1: "Atypical Angina", 2: "Non-Anginal Pain", 3: "Asymptomatic"}[x])
@@ -122,7 +125,10 @@ elif selected == 'Health Chatbot':
         return tree_to_code(classifier, cols)
 
     if st.button('Start Chatbot'):
-        st.session_state['iter'] = execute_bot()
+        try:
+            st.session_state['iter'] = execute_bot()
+        except Exception as e:
+            st.error(f"Error starting chatbot: {e}")
 
     if 'iter' in st.session_state:
         try:
@@ -132,3 +138,5 @@ elif selected == 'Health Chatbot':
                 st.session_state['iter'] = execute_bot()
         except StopIteration:
             st.success("Diagnosis completed.")
+        except Exception as e:
+            st.error(f"Error during diagnosis: {e}")

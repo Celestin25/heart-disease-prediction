@@ -95,7 +95,7 @@ elif selected == 'Health Chatbot':
             threshold = tree_.threshold[node]
             st.write(f"Do you have {name}?")
             ans = st.radio("Your Answer:", ["yes", "no"], key=f"answer_{depth}")
-            if st.button('Next'):
+            if st.button('Next', key=f'next_{depth}'):
                 if ans == "yes":
                     st.session_state.symptoms_present.append(name)
                     next_node = tree_.children_right[node]
@@ -111,10 +111,15 @@ elif selected == 'Health Chatbot':
             st.write("Symptoms given: " + str(list(symptoms_given)))
             confidence_level = (1.0 * len(st.session_state.symptoms_present)) / len(symptoms_given)
             st.write("Confidence level is: " + str(confidence_level))
-            row = doc_dataset[doc_dataset['Name'] == present_disease[0]]
-            st.write(f'Consult {str(row["Name"].values[0])}')
-            link = str(row['Description'].values[0])
-            st.write(f'Visit {create_hyperlink("this link", link)}')
+
+            # Check if there is a doctor available for the predicted disease
+            if not doc_dataset[doc_dataset['Name'] == present_disease[0]].empty:
+                row = doc_dataset[doc_dataset['Name'] == present_disease[0]]
+                st.write(f'Consult {str(row["Name"].values[0])}')
+                link = str(row['Description'].values[0])
+                st.write(f'Visit {create_hyperlink("this link", link)}')
+            else:
+                st.write("No specific doctor available in the dataset for this disease.")
 
     def tree_to_code(tree, feature_names):
         global tree_, feature_name

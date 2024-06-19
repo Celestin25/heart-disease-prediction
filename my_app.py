@@ -76,6 +76,7 @@ if selected == 'Heart Disease Prediction':
 
 elif selected == 'Health Chatbot':
     st.title('Health Chatbot for Disease Diagnosis')
+    st.write("Hey, I am HealthChatbot that can help you to know your disease. How may I help you today?")
 
     def print_disease(node):
         node = node[0]

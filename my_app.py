@@ -1,22 +1,14 @@
 import os
 import pickle
+import numpy as np
 import pandas as pd
 import streamlit as st
-from sklearn.tree import DecisionTreeClassifier
+from streamlit_option_menu import option_menu
+from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
-
-# Attempt to import transformers
-try:
-    from transformers import BertTokenizer, BertForSequenceClassification
-except ImportError:
-    # If transformers is not installed, install it
-    import sys
-    os.system(f"{sys.executable} -m pip install transformers")
-    # Retry the import
-    from transformers import BertTokenizer, BertForSequenceClassification
-
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -45,22 +37,16 @@ cols = training_dataset.columns[:-1]  # Assuming all columns except the last one
 def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
 
-# Load BERT model for mental health Q&A
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
-
-# Function for BERT model prediction
-def get_bert_response(question):
-    inputs = tokenizer(question, return_tensors="pt")
-    outputs = model(**inputs)
-    probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
-    return "Yes" if probs[0][1] > probs[0][0] else "No"
+# Mental Health Q&A Data
+mental_health_data = {
+    "What is depression?": "Depression is a mood disorder that causes persistent feelings of sadness and loss of interest.",
+    "What are the symptoms of anxiety?": "Symptoms of anxiety include feeling nervous, restless, or tense, having an increased heart rate, and sweating.",
+    "How can I manage stress?": "Managing stress can be done through regular physical activity, relaxation techniques like deep breathing, and maintaining a healthy lifestyle.",
+    # Add more Q&A as needed
+}
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
-
-
-
 
 with st.sidebar:
     selected = option_menu('Disease Prediction System', 
@@ -170,5 +156,5 @@ elif selected == 'Mental Health Q&A':
     query = st.text_input("Your Question:")
 
     if query:
-        response = get_bert_response(query)
+        response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Try rephrasing or ask another question.")
         st.write(response)

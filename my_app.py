@@ -1,10 +1,10 @@
 import os
 import pickle
-import torch
 import pandas as pd
 import streamlit as st
 from sklearn.tree import _tree, DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
+import torch
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -92,8 +92,6 @@ if selected == 'Heart Disease Prediction':
                 st.error(f"Error in prediction: {e}")
 
 elif selected == 'Health Chatbot':
-    
-
     st.title('Health Chatbot for Disease Diagnosis')
     st.write("Hey, I am HealthChatbot that can help you to know your disease. How may I help you today?")
 

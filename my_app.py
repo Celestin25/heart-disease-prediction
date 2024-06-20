@@ -9,12 +9,11 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
-# Install transformers if not installed
 try:
-    import transformers
+    from transformers import BertTokenizer, BertForSequenceClassification
 except ImportError:
-    import subprocess
-    subprocess.check_call(["pip", "install", "transformers"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "transformers"])
+    from transformers import BertTokenizer, BertForSequenceClassification
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))

@@ -9,13 +9,13 @@ import torch
 
 # Attempt to import transformers
 try:
-    from transformers import BertForSequenceClassification
+    from transformers import BertTokenizer, BertForSequenceClassification
 except ImportError:
     # If transformers is not installed, install it
     import sys
     os.system(f"{sys.executable} -m pip install transformers")
     # Retry the import
-    from transformers import BertForSequenceClassification
+    from transformers import BertTokenizer, BertForSequenceClassification
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -57,6 +57,9 @@ def get_bert_response(question):
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
+
+
+
 
 with st.sidebar:
     selected = option_menu('Disease Prediction System', 

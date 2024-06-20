@@ -7,7 +7,7 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
-from transformers import BertTokenizer, BertForSequenceClassification
+
 import torch
 
 # Load necessary models and data

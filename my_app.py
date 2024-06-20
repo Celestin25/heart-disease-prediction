@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import streamlit as st
+import torch
 from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder

@@ -1,30 +1,16 @@
 import os
 import pickle
+import numpy as np
 import pandas as pd
 import streamlit as st
-from sklearn.tree import _tree, DecisionTreeClassifier
+from streamlit_option_menu import option_menu
+from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
-import torch
-try:
-    from transformers import BertForSequenceClassification
-except ImportError:
-    BertForSequenceClassification = None
-
-# Later in your code where you use BertForSequenceClassification
-if BertForSequenceClassification is not None:
-    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
-    # Continue using the model
-else:
-    st.error("Error: Unable to load the BERT model. Please ensure the Transformers library is installed.")
-    model = None
+from sklearn.tree import DecisionTreeClassifier
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
-try:
-    heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
-except Exception as e:
-    st.error(f"Error loading the model: {e}")
-    heart_disease_model = None
+heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
 
 # Load datasets
 training_dataset = pd.read_csv(f'{working_dir}/Training.csv')
@@ -92,16 +78,13 @@ if selected == 'Heart Disease Prediction':
         thal = st.selectbox('Thalassemia', options=[0, 1, 2, 3], format_func=lambda x: {0: "Normal", 1: "Fixed Defect", 2: "Reversible Defect", 3: "Other"}[x])
 
     if st.button('Heart Disease Test Result'):
-        if heart_disease_model is None:
-            st.error("Error: Model not loaded.")
-        else:
-            user_input = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
-            try:
-                heart_prediction = heart_disease_model.predict([user_input])
-                heart_diagnosis = 'The person is having heart disease' if heart_prediction[0] == 1 else 'The person does not have any heart disease'
-                st.success(heart_diagnosis)
-            except Exception as e:
-                st.error(f"Error in prediction: {e}")
+        user_input = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
+        try:
+            heart_prediction = heart_disease_model.predict([user_input])
+            heart_diagnosis = 'The person is having heart disease' if heart_prediction[0] == 1 else 'The person does not have any heart disease'
+            st.success(heart_diagnosis)
+        except Exception as e:
+            st.error(f"Error in prediction: {e}")
 
 elif selected == 'Health Chatbot':
     st.title('Health Chatbot for Disease Diagnosis')
@@ -171,5 +154,5 @@ elif selected == 'Mental Health Q&A':
     query = st.text_input("Your Question:")
 
     if query:
-        response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Try rephrasing or ask another question.")
+        response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Please consult a professional.")
         st.write(response)

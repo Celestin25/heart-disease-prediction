@@ -5,6 +5,18 @@ import streamlit as st
 from sklearn.tree import _tree, DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
 import torch
+try:
+    from transformers import BertForSequenceClassification
+except ImportError:
+    BertForSequenceClassification = None
+
+# Later in your code where you use BertForSequenceClassification
+if BertForSequenceClassification is not None:
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+    # Continue using the model
+else:
+    st.error("Error: Unable to load the BERT model. Please ensure the Transformers library is installed.")
+    model = None
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))

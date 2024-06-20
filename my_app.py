@@ -1,6 +1,5 @@
 import os
 import pickle
-import numpy as np
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -37,11 +36,11 @@ def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
 
 # Mental Health Q&A Data
-mental_health_data = {
-    "What is depression?": "Depression is a mood disorder that causes persistent feelings of sadness and loss of interest.",
-    "What are the symptoms of anxiety?": "Symptoms of anxiety include feeling nervous, restless, or tense, having an increased heart rate, and sweating.",
-    "How can I manage stress?": "Managing stress can be done through regular physical activity, relaxation techniques like deep breathing, and maintaining a healthy lifestyle.",
-}
+mental_health_data = CaseInsensitiveDict({
+    "what is depression?": "Depression is a mood disorder that causes persistent feelings of sadness and loss of interest.",
+    "what are the symptoms of anxiety?": "Symptoms of anxiety include feeling nervous, restless, or tense, having an increased heart rate, and sweating.",
+    "how can i manage stress?": "Managing stress can be done through regular physical activity, relaxation techniques like deep breathing, and maintaining a healthy lifestyle.",
+})
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")

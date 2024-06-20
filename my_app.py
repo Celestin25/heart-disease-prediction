@@ -16,6 +16,7 @@ try:
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "transformers"])
     from transformers import BertTokenizer, BertForSequenceClassification
+
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))

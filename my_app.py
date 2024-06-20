@@ -45,6 +45,17 @@ mental_health_data = {
     # Add more Q&A as needed
 }
 
+# Load BERT model for mental health Q&A
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+
+# Function for BERT model prediction
+def get_bert_response(question):
+    inputs = tokenizer(question, return_tensors="pt")
+    outputs = model(**inputs)
+    probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
+    return "Yes" if probs[0][1] > probs[0][0] else "No"
+
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
 
@@ -156,5 +167,5 @@ elif selected == 'Mental Health Q&A':
     query = st.text_input("Your Question:")
 
     if query:
-        response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Try rephrasing or ask another question.")
+        response = get_bert_response(query)
         st.write(response)

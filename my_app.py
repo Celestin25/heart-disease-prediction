@@ -14,12 +14,13 @@ try:
     from transformers import BertTokenizer, BertForSequenceClassification
 except ImportError:
     # If transformers is not installed, install it
-    import subprocess
+    import os
     import sys
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "transformers"])
+    os.system(f"{sys.executable} -m pip install transformers")
 
     # Retry the import
     from transformers import BertTokenizer, BertForSequenceClassification
+
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))

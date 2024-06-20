@@ -1,14 +1,22 @@
 import os
 import pickle
-import numpy as np
 import pandas as pd
 import streamlit as st
-from streamlit_option_menu import option_menu
-from sklearn.tree import _tree
-from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.preprocessing import LabelEncoder
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
+
+# Attempt to import transformers
+try:
+    from transformers import BertForSequenceClassification
+except ImportError:
+    # If transformers is not installed, install it
+    import sys
+    os.system(f"{sys.executable} -m pip install transformers")
+    # Retry the import
+    from transformers import BertForSequenceClassification
+
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
@@ -35,14 +43,6 @@ cols = training_dataset.columns[:-1]  # Assuming all columns except the last one
 # Helper function for hyperlink
 def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
-
-# Mental Health Q&A Data
-mental_health_data = {
-    "What is depression?": "Depression is a mood disorder that causes persistent feelings of sadness and loss of interest.",
-    "What are the symptoms of anxiety?": "Symptoms of anxiety include feeling nervous, restless, or tense, having an increased heart rate, and sweating.",
-    "How can I manage stress?": "Managing stress can be done through regular physical activity, relaxation techniques like deep breathing, and maintaining a healthy lifestyle.",
-    # Add more Q&A as needed
-}
 
 # Load BERT model for mental health Q&A
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')

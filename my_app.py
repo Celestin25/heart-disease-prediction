@@ -8,7 +8,7 @@ from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 from transformers import BertTokenizer, BertForSequenceClassification
-import torch
+
 # Attempt to import transformers
 try:
     from transformers import BertTokenizer, BertForSequenceClassification

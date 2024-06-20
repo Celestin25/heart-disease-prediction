@@ -7,15 +7,21 @@ from sklearn.preprocessing import LabelEncoder
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 
-# Attempt to import transformers
 try:
-    from transformers import BertTokenizer, BertForSequenceClassification
+    from transformers import BertForSequenceClassification
 except ImportError:
     # If transformers is not installed, install it
     import sys
     os.system(f"{sys.executable} -m pip install transformers")
     # Retry the import
-    from transformers import BertTokenizer, BertForSequenceClassification
+    from transformers import BertForSequenceClassification
+
+try:
+    # Load BERT model for mental health Q&A
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+except Exception as e:
+    st.error(f"Error loading BERT model: {e}")
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))

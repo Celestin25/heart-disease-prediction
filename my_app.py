@@ -7,6 +7,8 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
+from transformers import BertTokenizer, BertForSequenceClassification
+import torch
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -154,5 +156,5 @@ elif selected == 'Mental Health Q&A':
     query = st.text_input("Your Question:")
 
     if query:
-        response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Please consult a professional.")
+        response = mental_health_data.get(query, "I'm sorry, I don't have an answer to that question. Try rephrasing or ask another question.")
         st.write(response)

@@ -9,12 +9,16 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
-import subprocess 
-import sys
+# Attempt to import transformers
 try:
     from transformers import BertTokenizer, BertForSequenceClassification
 except ImportError:
+    # If transformers is not installed, install it
+    import subprocess
+    import sys
     subprocess.check_call([sys.executable, "-m", "pip", "install", "transformers"])
+
+    # Retry the import
     from transformers import BertTokenizer, BertForSequenceClassification
 
 # Load necessary models and data

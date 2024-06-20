@@ -9,6 +9,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
+import subprocess  # Added import for subprocess
+import sys
 try:
     from transformers import BertTokenizer, BertForSequenceClassification
 except ImportError:

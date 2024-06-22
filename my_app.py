@@ -124,10 +124,10 @@ elif selected == 'Health Chatbot':
                 if ans == "yes":
                     st.session_state.symptoms_present.append(name)
                     next_node = tree_.children_right[node]
-                 else:
+                else:
                 next_node = tree_.children_left[node]
-            st.session_state.current_node = next_node 
-            recurse(next_node, depth + 1) 
+            st.session_state.current_node = next_node  
+            recurse(next_node, depth + 1)
         else:
             present_disease = print_disease(tree_.value[node])
             st.write("You may have: " + str(present_disease))

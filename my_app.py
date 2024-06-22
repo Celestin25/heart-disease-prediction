@@ -6,7 +6,8 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
-from requests.structures import CaseInsensitiveDict 
+from requests.structures import CaseInsensitiveDict
+import json
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -35,12 +36,18 @@ cols = training_dataset.columns[:-1]  # Assuming all columns except the last one
 def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
 
-# Mental Health Q&A Data
-mental_health_data = CaseInsensitiveDict({
-    "what is depression?": "Depression is a mood disorder that causes persistent feelings of sadness and loss of interest.",
-    "what are the symptoms of anxiety?": "Symptoms of anxiety include feeling nervous, restless, or tense, having an increased heart rate, and sweating.",
-    "how can i manage stress?": "Managing stress can be done through regular physical activity, relaxation techniques like deep breathing, and maintaining a healthy lifestyle.",
-})
+# Load Mental Health Q&A Intents
+intents_file_path = f'{working_dir}/intents.json'
+with open(intents_file_path, 'r') as file:
+    intents_data = json.load(file)
+
+# Function to get chatbot response
+def get_chatbot_response(user_query):
+    for intent in intents_data['intents']:
+        for pattern in intent['patterns']:
+            if pattern.lower() in user_query.lower():
+                return intent['responses'][0]  # Return the first response
+    return "I'm sorry, I don't have an answer to that question. Please consult a professional."
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
@@ -153,11 +160,5 @@ elif selected == 'Mental Health Q&A':
     query = st.text_input("Your Question:")
 
     if query:
-        normalized_query = query.strip().lower()  # Normalize query
-
-        if normalized_query in mental_health_data:
-            response = mental_health_data[normalized_query]
-        else:
-            response = "I'm sorry, I don't have an answer to that question. Please consult a professional."
-
+        response = get_chatbot_response(query)
         st.write(response)

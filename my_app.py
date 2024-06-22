@@ -61,7 +61,7 @@ st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑
 
 with st.sidebar:
     selected = option_menu('Disease Prediction System', 
-                           ['Heart Disease Prediction', 'Health Chatbot', 'Mental Health Q&A'], 
+                           ['Heart Disease Prediction', 'Health Chatbot', 'Mental Health Chatbot'], 
                            menu_icon='hospital-fill', 
                            icons=['heart', 'chat', 'info-circle'], 
                            default_index=0)
@@ -157,8 +157,8 @@ elif selected == 'Health Chatbot':
         st.session_state.symptoms_present = []
         tree_to_code(classifier, cols)
 
-elif selected == 'Mental Health Chatbot':
-    st.title("Mental Health Chatbot")
+elif selected == 'Mental Health Q&A':
+    st.title("Mental Health Q&A")
     st.write("Ask me anything about mental health.")
 
     user_query = st.text_input("Your Question:")

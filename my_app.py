@@ -158,7 +158,7 @@ elif selected == 'Health Chatbot':
         tree_to_code(classifier, cols)
 
 elif selected == 'Mental Health Q&A':
-    st.title("Mental Health Q&A")
+    st.title("Mental Health Chatbot")
     st.write("Ask me anything about mental health.")
 
     user_query = st.text_input("Your Question:")

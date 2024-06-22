@@ -157,7 +157,7 @@ elif selected == 'Health Chatbot':
         st.session_state.symptoms_present = []
         tree_to_code(classifier, cols)
 
-elif selected == 'Mental Health Q&A':
+elif selected == 'Mental Health Chatbot':
     st.title("Mental Health Chatbot")
     st.write("Ask me anything about mental health.")
 

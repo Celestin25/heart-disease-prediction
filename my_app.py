@@ -37,9 +37,16 @@ def create_hyperlink(text, url):
     return f'<a href="{url}" target="_blank">{text}</a>'
 
 # Load Mental Health Q&A Intents
-intents_file_path = f'{working_dir}/intents.json'
-with open(intents_file_path, 'r') as file:
-    intents_data = json.load(file)
+intents_file_path = os.path.join(working_dir, 'intents.json')
+try:
+    with open(intents_file_path, 'r') as file:
+        intents_data = json.load(file)
+except FileNotFoundError:
+    st.error("The 'intents.json' file was not found. Please ensure it is placed in the root directory.")
+    st.stop()
+except json.JSONDecodeError:
+    st.error("Error decoding the 'intents.json' file. Please ensure it is in the correct JSON format.")
+    st.stop()
 
 # Function to get chatbot response
 def get_chatbot_response(user_query):
@@ -148,17 +155,13 @@ elif selected == 'Health Chatbot':
     if st.button('Start Chatbot'):
         st.session_state.current_node = 0
         st.session_state.symptoms_present = []
-        st.session_state.started = True
-
-    if 'started' in st.session_state:
         tree_to_code(classifier, cols)
 
 elif selected == 'Mental Health Q&A':
-    st.title('Mental Health Chatbot')
-    st.write("Ask me anything about mental health!")
+    st.title("Mental Health Q&A")
+    st.write("Ask me anything about mental health.")
 
-    query = st.text_input("Your Question:")
-
-    if query:
-        response = get_chatbot_response(query)
+    user_query = st.text_input("Your Question:")
+    if user_query:
+        response = get_chatbot_response(user_query)
         st.write(response)

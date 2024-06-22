@@ -61,7 +61,7 @@ st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑
 
 with st.sidebar:
     selected = option_menu('Disease Prediction System', 
-                           ['Heart Disease Prediction', 'Health Chatbot', 'Mental Health Chatbot'], 
+                           ['Heart Disease Prediction', 'Health Chatbot', 'Mental Health Q&A'], 
                            menu_icon='hospital-fill', 
                            icons=['heart', 'chat', 'info-circle'], 
                            default_index=0)

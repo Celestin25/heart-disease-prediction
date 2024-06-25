@@ -127,7 +127,7 @@ elif selected == 'Health Chatbot':
                 else:
                     next_node = tree_.children_left[node]
                 st.session_state.current_node = next_node
-                st.experimental_rerun() 
+                st.experimental_rerun()  # Use experimental_rerun to refresh the state
         else:
             present_disease = print_disease(tree_.value[node])
             st.write("You may have: " + str(present_disease))
@@ -157,6 +157,9 @@ elif selected == 'Health Chatbot':
         st.session_state.current_node = 0
         st.session_state.symptoms_present = []
         tree_to_code(classifier, cols)
+    else:
+        tree_to_code(classifier, cols)
+
 
 elif selected == 'Mental Health Q&A':
     st.title("Mental Health Q&A")

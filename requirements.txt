@@ -8,5 +8,4 @@ matplotlib
 seaborn
 scikit-learn
 joblib
-requests==2.26.0
 

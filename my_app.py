@@ -69,18 +69,18 @@ def preprocess_text(text):
     return ' '.join(tokens)
 
 # Function to get chatbot response
+from fuzzywuzzy import fuzz
+
 def get_chatbot_response(user_query):
-    user_query = preprocess_text(user_query)
-    max_similarity = 0
+    highest_similarity = 0
     best_response = "I'm sorry, I don't have an answer to that question. Please consult a professional."
 
     for intent in intents_data['intents']:
         for pattern in intent['patterns']:
-            pattern = preprocess_text(pattern)
-            similarity = nlp(user_query).similarity(nlp(pattern))
-            if similarity > max_similarity:
-                max_similarity = similarity
-                best_response = intent['responses'][0]
+            similarity = fuzz.partial_ratio(pattern.lower(), user_query.lower())
+            if similarity > highest_similarity:
+                highest_similarity = similarity
+                best_response = intent['responses'][0]  # Return the first response
 
     return best_response
 

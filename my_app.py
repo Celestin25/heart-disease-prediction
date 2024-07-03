@@ -8,14 +8,11 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 from requests.structures import CaseInsensitiveDict
 import json
-import nltk
-from nltk.stem import WordNetLemmatizer
 import spacy
 
-nltk.download('punkt')
-nltk.download('wordnet')
-
-lemmatizer = WordNetLemmatizer()
+# Download SpaCy model
+import spacy.cli
+spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 
 # Load necessary models and data

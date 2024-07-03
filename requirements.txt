@@ -9,6 +9,5 @@ seaborn
 scikit-learn
 joblib
 nltk
-requests
-spacy
+
 

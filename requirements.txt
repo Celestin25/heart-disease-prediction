@@ -8,8 +8,5 @@ matplotlib
 seaborn
 scikit-learn
 joblib
-streamlit-option-menu
-spacy
-requests
-
+requests==2.26.0
 

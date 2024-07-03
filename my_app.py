@@ -6,31 +6,17 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
-import spacy
+from requests.structures import CaseInsensitiveDict
+import json
 
-# Download SpaCy model
-import spacy.cli
-spacy.cli.download("en_core_web_sm")
-nlp = spacy.load("en_core_web_sm")
-
-# Set up the working directory
+# Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Load models and data
-try:
-    heart_disease_model = pickle.load(open(os.path.join(working_dir, 'saved_models', 'heart_disease_model.sav'), 'rb'))
-except Exception as e:
-    st.error(f"Error loading heart disease model: {e}")
-    st.stop()
+heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
 
 # Load datasets
-try:
-    training_dataset = pd.read_csv(os.path.join(working_dir, 'Training.csv'))
-    test_dataset = pd.read_csv(os.path.join(working_dir, 'Testing.csv'))
-    doc_dataset = pd.read_csv(os.path.join(working_dir, 'doctors_dataset.csv'), names=['Name', 'Description'])
-except Exception as e:
-    st.error(f"Error loading datasets: {e}")
-    st.stop()
+training_dataset = pd.read_csv(f'{working_dir}/Training.csv')
+test_dataset = pd.read_csv(f'{working_dir}/Testing.csv')
+doc_dataset = pd.read_csv(f'{working_dir}/doctors_dataset.csv', names=['Name', 'Description'])
 
 # Preprocessing
 X = training_dataset.iloc[:, 0:132].values
@@ -43,7 +29,7 @@ y = labelencoder.fit_transform(Y)
 classifier = DecisionTreeClassifier()
 classifier.fit(X, y)
 
-# Define cols
+# Define `cols`
 cols = training_dataset.columns[:-1]  # Assuming all columns except the last one are features
 
 # Helper function for hyperlink
@@ -62,32 +48,16 @@ except json.JSONDecodeError:
     st.error("Error decoding the 'intents.json' file. Please ensure it is in the correct JSON format.")
     st.stop()
 
-# Function to preprocess text
-def preprocess_text(text):
-    doc = nlp(text.lower())
-    tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
-    return ' '.join(tokens)
-
 # Function to get chatbot response
-from fuzzywuzzy import fuzz
-
 def get_chatbot_response(user_query):
-    highest_similarity = 0
-    best_response = "I'm sorry, I don't have an answer to that question. Please consult a professional."
-
     for intent in intents_data['intents']:
         for pattern in intent['patterns']:
-            similarity = fuzz.partial_ratio(pattern.lower(), user_query.lower())
-            if similarity > highest_similarity:
-                highest_similarity = similarity
-                best_response = intent['responses'][0]  # Return the first response
-
-    return best_response
+            if pattern.lower() in user_query.lower():
+                return intent['responses'][0]  # Return the first response
+    return "I'm sorry, I don't have an answer to that question. Please consult a professional."
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
-
-st.write("Debug: Streamlit is running")  # Debugging statement
 
 with st.sidebar:
     selected = option_menu('Disease Prediction System', 
@@ -153,23 +123,49 @@ elif selected == 'Health Chatbot':
             if st.button('Next', key=f'next_{depth}'):
                 if ans == "yes":
                     st.session_state.symptoms_present.append(name)
-                if ans == "no":
-                    st.session_state.symptoms_present.append(f"not {name}")
-
-                if tree_.children_left[node] != _tree.TREE_LEAF:
-                    next_node = tree_.children_left[node] if ans == "yes" else tree_.children_right[node]
-                    recurse(next_node, depth + 1)
+                    next_node = tree_.children_right[node]
                 else:
-                    st.success(f"You may have {print_disease(dimensionality_reduction.loc[:, st.session_state.symptoms_present].sum(axis=1).values.reshape(1, -1))}")
+                    next_node = tree_.children_left[node]
+                st.session_state.current_node = next_node
+                st.experimental_rerun()  
+        else:
+            present_disease = print_disease(tree_.value[node])
+            st.write("You may have: " + str(present_disease))
+            red_cols = dimensionality_reduction.columns
+            symptoms_given = red_cols[dimensionality_reduction.loc[present_disease].values[0].nonzero()]
+            st.write("Symptoms present: " + str(list(st.session_state.symptoms_present)))
+            st.write("Symptoms given: " + str(list(symptoms_given)))
+            confidence_level = (1.0 * len(st.session_state.symptoms_present)) / len(symptoms_given)
+            st.write("Confidence level is: " + str(confidence_level))
 
-    if st.button('Start Diagnosis'):
-        recurse(st.session_state.current_node, 0)
+            # Check if there is a doctor available for the predicted disease
+            if not doc_dataset[doc_dataset['Name'] == present_disease[0]].empty:
+                row = doc_dataset[doc_dataset['Name'] == present_disease[0]]
+                st.write(f'Consult {str(row["Name"].values[0])}')
+                link = str(row['Description'].values[0])
+                st.write(f'Visit {create_hyperlink("this link", link)}')
+            else:
+                st.write("No specific doctor available in the dataset for this disease.")
+
+    def tree_to_code(tree, feature_names):
+        global tree_, feature_name
+        tree_ = tree.tree_
+        feature_name = [feature_names[i] if i != _tree.TREE_UNDEFINED else "undefined!" for i in tree_.feature]
+        return recurse(st.session_state.current_node, 1)
+
+    if st.button('Start Chatbot'):
+        st.session_state.current_node = 0
+        st.session_state.symptoms_present = []
+        tree_to_code(classifier, cols)
+    else:
+        tree_to_code(classifier, cols)
+
 
 elif selected == 'Mental Health Q&A':
-    st.title('Mental Health Q&A')
-    st.write("Welcome to the Mental Health Q&A. Ask me anything about mental health.")
+    st.title("Mental Health Q&A")
+    st.write("Ask me anything about mental health.")
 
-    user_input = st.text_input("You:", key="mental_health_input")
-    if st.button("Send", key="send_button"):
-        response = get_chatbot_response(user_input)
-        st.write(f"Bot: {response}")
+    user_query = st.text_input("Your Question:")
+    if user_query:
+        response = get_chatbot_response(user_query)
+        st.write(response)

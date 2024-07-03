@@ -6,8 +6,6 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
-from requests.structures import CaseInsensitiveDict
-import json
 import spacy
 
 # Download SpaCy model
@@ -15,14 +13,24 @@ import spacy.cli
 spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 
-# Load necessary models and data
+# Set up the working directory
 working_dir = os.path.dirname(os.path.abspath(__file__))
-heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
+
+# Load models and data
+try:
+    heart_disease_model = pickle.load(open(os.path.join(working_dir, 'saved_models', 'heart_disease_model.sav'), 'rb'))
+except Exception as e:
+    st.error(f"Error loading heart disease model: {e}")
+    st.stop()
 
 # Load datasets
-training_dataset = pd.read_csv(f'{working_dir}/Training.csv')
-test_dataset = pd.read_csv(f'{working_dir}/Testing.csv')
-doc_dataset = pd.read_csv(f'{working_dir}/doctors_dataset.csv', names=['Name', 'Description'])
+try:
+    training_dataset = pd.read_csv(os.path.join(working_dir, 'Training.csv'))
+    test_dataset = pd.read_csv(os.path.join(working_dir, 'Testing.csv'))
+    doc_dataset = pd.read_csv(os.path.join(working_dir, 'doctors_dataset.csv'), names=['Name', 'Description'])
+except Exception as e:
+    st.error(f"Error loading datasets: {e}")
+    st.stop()
 
 # Preprocessing
 X = training_dataset.iloc[:, 0:132].values
@@ -78,6 +86,8 @@ def get_chatbot_response(user_query):
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")
+
+st.write("Debug: Streamlit is running")  # Debugging statement
 
 with st.sidebar:
     selected = option_menu('Disease Prediction System', 
@@ -160,6 +170,6 @@ elif selected == 'Mental Health Q&A':
     st.write("Welcome to the Mental Health Q&A. Ask me anything about mental health.")
 
     user_input = st.text_input("You:", key="mental_health_input")
-    if st.button("Send", key="mental_health_send"):
+    if st.button("Send", key="send_button"):
         response = get_chatbot_response(user_input)
-        st.text_area("Bot:", value=response, height=200, max_chars=None, key="mental_health_response")
+        st.write(f"Bot: {response}")

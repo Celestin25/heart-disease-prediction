@@ -8,6 +8,15 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 from requests.structures import CaseInsensitiveDict
 import json
+import nltk
+from nltk.stem import WordNetLemmatizer
+import spacy
+
+nltk.download('punkt')
+nltk.download('wordnet')
+
+lemmatizer = WordNetLemmatizer()
+nlp = spacy.load("en_core_web_sm")
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -29,7 +38,7 @@ y = labelencoder.fit_transform(Y)
 classifier = DecisionTreeClassifier()
 classifier.fit(X, y)
 
-# Define `cols`
+# Define cols
 cols = training_dataset.columns[:-1]  # Assuming all columns except the last one are features
 
 # Helper function for hyperlink
@@ -48,13 +57,27 @@ except json.JSONDecodeError:
     st.error("Error decoding the 'intents.json' file. Please ensure it is in the correct JSON format.")
     st.stop()
 
+# Function to preprocess text
+def preprocess_text(text):
+    doc = nlp(text.lower())
+    tokens = [lemmatizer.lemmatize(token.text) for token in doc if not token.is_stop and not token.is_punct]
+    return ' '.join(tokens)
+
 # Function to get chatbot response
 def get_chatbot_response(user_query):
+    user_query = preprocess_text(user_query)
+    max_similarity = 0
+    best_response = "I'm sorry, I don't have an answer to that question. Please consult a professional."
+
     for intent in intents_data['intents']:
         for pattern in intent['patterns']:
-            if pattern.lower() in user_query.lower():
-                return intent['responses'][0]  # Return the first response
-    return "I'm sorry, I don't have an answer to that question. Please consult a professional."
+            pattern = preprocess_text(pattern)
+            similarity = nlp(user_query).similarity(nlp(pattern))
+            if similarity > max_similarity:
+                max_similarity = similarity
+                best_response = intent['responses'][0]
+
+    return best_response
 
 # Streamlit setup
 st.set_page_config(page_title="Health Assistant", layout="wide", page_icon="🧑‍⚕️")

@@ -6,8 +6,8 @@ from streamlit_option_menu import option_menu
 from sklearn.tree import _tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
-from requests.structures import CaseInsensitiveDict
 import json
+import re
 
 # Load necessary models and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -52,7 +52,7 @@ except json.JSONDecodeError:
 def get_chatbot_response(user_query):
     for intent in intents_data['intents']:
         for pattern in intent['patterns']:
-            if pattern.lower() in user_query.lower():
+            if re.search(pattern.lower(), user_query.lower()):
                 return intent['responses'][0]  # Return the first response
     return "I'm sorry, I don't have an answer to that question. Please consult a professional."
 
@@ -159,7 +159,6 @@ elif selected == 'Health Chatbot':
         tree_to_code(classifier, cols)
     else:
         tree_to_code(classifier, cols)
-
 
 elif selected == 'Mental Health Q&A':
     st.title("Mental Health Q&A")

@@ -1,54 +1,100 @@
 {
-  "intents": [
-    {
-      "tag": "greeting",
-      "patterns": ["Bite", "Muraho", "Hari umuntu uhari?", "Muraho neza", "Mwiriwe", "Muraho neza", "Mwiriwe neza", "Bite se?", "Hola", "Bonjour", "Mwiriwe se?", "Sasa", "Mwiriwe mwiza", "Mwiriwe neza"],
-      "responses": ["Muraho neza. Mubwire uko mwiyumva uyu munsi?", "Muraho neza. Icyo cyabazanye hano uyu munsi ni iki?", "Muraho neza. Umeze ute uyu munsi?", "Ni byiza kuguhabona. Umeze ute muri iki gihe?", "Muraho neza. Nshimishijwe no kongera kubabona. Hari icyo mwifuza kumbwira ubu?"]
-    },
-    {
-      "tag": "morning",
-      "patterns": ["Mwaramutse"],
-      "responses": ["Mwaramutse neza. Nizeye ko mwagize ijoro ryiza. Umeze ute uyu munsi?"]
-    },
-    {
-      "tag": "afternoon",
-      "patterns": ["Mwiriwe"],
-      "responses": ["Mwiriwe neza. Uyu munsi wanyu uragenda ute?"]
-    },
-    {
-      "tag": "evening",
-      "patterns": ["Mwiriwe neza"],
-      "responses": ["Mwiriwe neza. Uyu munsi wawe wagiye ute?"]
-    },
-    {
-      "tag": "night",
-      "patterns": ["Ijoro ryiza"],
-      "responses": ["Ijoro ryiza. Isomere neza.", "Ijoro ryiza. Imyoto myiza."]
-    },
-    {
-      "tag": "goodbye",
-      "patterns": ["Murabeho", "Tuzabonana", "Urabeho", "Au revoir", "Sayonara", "Ok urabeho", "Murabeho rero", "Ugir'ibihe byiza"],
-      "responses": ["Tuzabonana.", "Umunsi mwiza.", "Murabeho! Musubire vuba.", "Tuzasubira."]
-    },
-    {
-      "tag": "thanks",
-      "patterns": ["Murakoze", "Urakoze", "Byadufashije", "Murakoze kubufasha", "Murakoze cyane"],
-      "responses": ["Nishimiye kubafasha!", "Igihe cyose!", "Ni ibyishimo byanjye", "Murakaza neza!"]
-    },
-    {
-      "tag": "no-response",
-      "patterns": [""],
-      "responses": ["Mbabarira, sinabyumvise neza.", "Nyamuneka komeza umbwire.", "Sinumva neza ibyo ushaka kuvuga.", "Nyamuneka ntutinye kumbwira."]
-    },
-    {
-      "tag": "neutral-response",
-      "patterns": ["ntacyo", "ntakindi", "nta kinini"],
-      "responses": ["Ooh ndabibona. Waba ushaka ko tuganira ku bindi?"]
-    },
-    {
-      "tag": "about",
-      "patterns": ["Uri nde?", "Wowe uri nde?", "Ninde uri?", "Mbwira byinshi kuri wowe.", "Izina ryawe ni irihe?", "Nakaguhamagara nte?", "Izina ryawe ninde?", "Mbwira kuri wowe" ],
-      "responses": ["Ndi Jamila, Umufasha wanyu wa AI mu by’ubuvuzi bw’umutima. Umeze ute uyu munsi?", "Ndi Pandora, Umufasha wanyu mu by’ubuvuzi bw’umutima wakozwe mu buryo bw'ubwenge bw'ubukorano. Mubwire uko mwiyumva.", "Ndi Pandora. Ndi umukozi wa AI wakozwe ngo nkore nk’ umuganga w'ubuvuzi bw'umubiri. Umeze ute uyu munsi?", "Mushobora kunita Pandora.", "Ndi Pandora!", "Mwitirize Pandora"]
-    }
-  ]
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Bite", "Muraho", "Hari umuntu uhari?", "Muraho neza", "Mwiriwe",
+        "Muraho neza", "Mwiriwe neza", "Bite se?", "Hola", "Bonjour",
+        "Mwiriwe se?", "Sasa", "Mwiriwe mwiza", "Mwiriwe neza"
+      ],
+      "responses": [
+        "Muraho neza. Mubwire uko mwiyumva uyu munsi?", 
+        "Muraho neza. Icyo cyabazanye hano uyu munsi ni iki?", 
+        "Muraho neza. Umeze ute uyu munsi?", 
+        "Ni byiza kuguhabona. Umeze ute muri iki gihe?", 
+        "Muraho neza. Nshimishijwe no kongera kubabona. Hari icyo mwifuza kumbwira ubu?"
+      ]
+    },
+    {
+      "tag": "morning",
+      "patterns": ["Mwaramutse"],
+      "responses": [
+        "Mwaramutse neza. Nizeye ko mwagize ijoro ryiza. Umeze ute uyu munsi?"
+      ]
+    },
+    {
+      "tag": "afternoon",
+      "patterns": ["Mwiriwe"],
+      "responses": [
+        "Mwiriwe neza. Uyu munsi wanyu uragenda ute?"
+      ]
+    },
+    {
+      "tag": "evening",
+      "patterns": ["Mwiriwe neza"],
+      "responses": [
+        "Mwiriwe neza. Uyu munsi wawe wagiye ute?"
+      ]
+    },
+    {
+      "tag": "night",
+      "patterns": ["Ijoro ryiza"],
+      "responses": [
+        "Ijoro ryiza. Isomere neza.", 
+        "Ijoro ryiza. Imyoto myiza."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Murabeho", "Tuzabonana", "Urabeho", "Au revoir", "Sayonara", 
+        "Ok urabeho", "Murabeho rero", "Ugir'ibihe byiza"
+      ],
+      "responses": [
+        "Tuzabonana.", "Umunsi mwiza.", "Murabeho! Musubire vuba.", "Tuzasubira."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Murakoze", "Urakoze", "Byadufashije", "Murakoze kubufasha", 
+        "Murakoze cyane"
+      ],
+      "responses": [
+        "Nishimiye kubafasha!", "Igihe cyose!", "Ni ibyishimo byanjye", 
+        "Murakaza neza!"
+      ]
+    },
+    {
+      "tag": "no-response",
+      "patterns": [""],
+      "responses": [
+        "Mbabarira, sinabyumvise neza.", "Nyamuneka komeza umbwire.", 
+        "Sinumva neza ibyo ushaka kuvuga.", "Nyamuneka ntutinye kumbwira."
+      ]
+    },
+    {
+      "tag": "neutral-response",
+      "patterns": [
+        "ntacyo", "ntakindi", "nta kinini"
+      ],
+      "responses": [
+        "Ooh ndabibona. Waba ushaka ko tuganira ku bindi?"
+      ]
+    },
+    {
+      "tag": "about",
+      "patterns": [
+        "Uri nde?", "Wowe uri nde?", "Ninde uri?", "Mbwira byinshi kuri wowe.",
+        "Izina ryawe ni irihe?", "Nakaguhamagara nte?", "Izina ryawe ninde?", 
+        "Mbwira kuri wowe"
+      ],
+      "responses": [
+        "Ndi Jamila, Umufasha wanyu wa AI mu by’ubuvuzi bw’umutima. Umeze ute uyu munsi?", 
+        "Ndi Pandora, Umufasha wanyu mu by’ubuvuzi bw’umutima wakozwe mu buryo bw'ubwenge bw'ubukorano. Mubwire uko mwiyumva.", 
+        "Ndi Pandora. Ndi umukozi wa AI wakozwe ngo nkore nk’ umuganga w'ubuvuzi bw'umubiri. Umeze ute uyu munsi?", 
+        "Mushobora kunita Pandora.", "Ndi Pandora!", "Mwitirize Pandora"
+      ]
+    }
+  ]
 }

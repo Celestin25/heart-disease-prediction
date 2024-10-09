@@ -70,7 +70,7 @@ if st.session_state['chat_history']:
 
 # Function to display chat input box with an embedded arrow
 def chat_input_box(key, language):
-    # CSS for text area and button
+    # CSS for the input box and button
     st.markdown("""
     <style>
     .input-container {
@@ -105,16 +105,10 @@ def chat_input_box(key, language):
     </style>
     """, unsafe_allow_html=True)
 
-    # HTML for the text area and arrow button
-    query = st.text_input("", "", key=key)
-    st.markdown(f"""
-    <div class="input-container">
-        <textarea class="input-textarea" id="{key}_input" placeholder="Type your message..."></textarea>
-        <button class="input-button" onclick="document.getElementById('{key}_submit').click()">→</button>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("Send", key=f"{key}_submit"):
+    # HTML for the arrow button only
+    query = st.text_input("Type your message...", "", key=key)
+    
+    if st.button("→", key=f"{key}_arrow"):
         if query:
             response = get_chatbot_response(query, language=language)
             add_to_chat(query, response)

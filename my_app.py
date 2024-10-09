@@ -7,7 +7,7 @@ from streamlit_option_menu import option_menu
 # Load necessary files and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Load English Mental Health Q&A dataset (intents.json)
+# Load English Mental Health dataset (intents.json)
 intents_file_path_en = os.path.join(working_dir, 'intents.json')
 try:
     with open(intents_file_path_en, 'r') as file:
@@ -49,7 +49,7 @@ st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_ico
 
 with st.sidebar:
     selected = option_menu('Mental Health Assistant', 
-                           ['Mental Health Q&A (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                           ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
                            menu_icon='hospital-fill', 
                            icons=['info-circle', 'info-circle'], 
                            default_index=0)
@@ -116,8 +116,8 @@ def chat_input_box(key, language, placeholder_text):
 
 
 # English Mental Health Q&A Session
-if selected == 'Mental Health Q&A (English)':
-    st.title("Mental Health Q&A (English)")
+if selected == 'Mental Health (English)':
+    st.title("Mental Health (English)")
     st.write("Ask me anything about mental health, and I will try to assist you with answers.")
     
     # Display chat input box for English with English placeholder
@@ -125,7 +125,7 @@ if selected == 'Mental Health Q&A (English)':
 
 # Kinyarwanda Ubuzima bwo mumutwe Session
 elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-    st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
+    st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
     st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
 
     # Display chat input box for Kinyarwanda with Kinyarwanda placeholder

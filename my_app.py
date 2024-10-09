@@ -49,27 +49,45 @@ st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_ico
 
 with st.sidebar:
     selected = option_menu('Mental Health Assistant', 
-                           ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                           ['Mental Health Q&A (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
                            menu_icon='hospital-fill', 
                            icons=['info-circle', 'info-circle'], 
                            default_index=0)
 
+# Initialize session state to keep track of chat history
+if 'chat_history' not in st.session_state:
+    st.session_state['chat_history'] = []
+
+# Define function to add question and response to the chat history
+def add_to_chat(user_query, response):
+    st.session_state['chat_history'].append({"query": user_query, "response": response})
+
+# Display chat history
+if st.session_state['chat_history']:
+    for chat in st.session_state['chat_history']:
+        st.write(f"**You:** {chat['query']}")
+        st.write(f"**Bot:** {chat['response']}")
+
 # English Mental Health Q&A Session
-if selected == 'Mental Health (English)':
-    st.title("Mental Health (English)")
+if selected == 'Mental Health Q&A (English)':
+    st.title("Mental Health Q&A (English)")
     st.write("Ask me anything about mental health, and I will try to assist you with answers.")
 
-    user_query_en = st.text_input("Your Question:")
-    if user_query_en:
-        response_en = get_chatbot_response(user_query_en, language='en')
-        st.write(response_en)
+    user_query_en = st.text_area("Your Question:", "", height=100)
+    if st.button("Send", key='send_en'):
+        if user_query_en:
+            response_en = get_chatbot_response(user_query_en, language='en')
+            add_to_chat(user_query_en, response_en)
+            st.experimental_rerun()  # Rerun to display updated chat history
 
 # Kinyarwanda Ubuzima bwo mumutwe Session
 elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-    st.title("Ubuzima bwo mumutwe -(Kinyarwanda)")
+    st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
     st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
 
-    user_query_rw = st.text_input("Ikibazo cyawe:")
-    if user_query_rw:
-        response_rw = get_chatbot_response(user_query_rw, language='rw')
-        st.write(response_rw)
+    user_query_rw = st.text_area("Ikibazo cyawe:", "", height=100)
+    if st.button("Ohereza", key='send_rw'):
+        if user_query_rw:
+            response_rw = get_chatbot_response(user_query_rw, language='rw')
+            add_to_chat(user_query_rw, response_rw)
+            st.experimental_rerun()  # Rerun to display updated chat history

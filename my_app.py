@@ -69,7 +69,7 @@ if st.session_state['chat_history']:
         st.write(f"**Bot:** {chat['response']}")
 
 # Function to display chat input box with an embedded arrow
-def chat_input_box(key, language):
+def chat_input_box(key, language, placeholder_text):
     # CSS for the input box and button
     st.markdown("""
     <style>
@@ -106,7 +106,7 @@ def chat_input_box(key, language):
     """, unsafe_allow_html=True)
 
     # HTML for the arrow button only
-    query = st.text_input("Type your message...", "", key=key)
+    query = st.text_input(placeholder_text, "", key=key)
     
     if st.button("→", key=f"{key}_arrow"):
         if query:
@@ -119,13 +119,14 @@ if selected == 'Mental Health Q&A (English)':
     st.title("Mental Health Q&A (English)")
     st.write("Ask me anything about mental health, and I will try to assist you with answers.")
     
-    # Display chat input box for English
-    chat_input_box("chat_en", "en")
+    # Display chat input box for English with English placeholder
+    chat_input_box("chat_en", "en", "Type your message...")
 
 # Kinyarwanda Ubuzima bwo mumutwe Session
 elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
     st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
     st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
 
-    # Display chat input box for Kinyarwanda
-    chat_input_box("chat_rw", "rw")
+    # Display chat input box for Kinyarwanda with Kinyarwanda placeholder
+    chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
+

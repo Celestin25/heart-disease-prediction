@@ -122,20 +122,21 @@ def chat_input_box(key, language, placeholder_text):
     # HTML for the textarea with an embedded arrow button inside the textarea
     query = st.text_area(placeholder_text, "", key=key, height=50)
 
-    # Check if key exists in session state and initialize if not
+    # Initialize key in session state if it doesn't exist
     if key not in st.session_state:
         st.session_state[key] = ""
 
-    # Use a regular button positioned separately as an arrow
+    # Button to send the message
     arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message")
-    
+
     # Check for arrow click or if the Enter key is pressed (simulate form submission)
-    if arrow_clicked or (query and st.session_state.get(f"{key}_enter", False)):
+    if arrow_clicked:
         if query.strip():  # Ensure the input is not empty
             response = get_chatbot_response(query, language=language)
             add_to_chat(query, response)
             st.session_state[key] = ""  # Clear input after submission
             st.experimental_rerun()  # Rerun to display updated chat history
+
 
 
 

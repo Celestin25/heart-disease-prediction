@@ -68,92 +68,67 @@ if st.session_state['chat_history']:
         st.write(f"**You:** {chat['query']}")
         st.write(f"**Bot:** {chat['response']}")
 
+# Function to display chat input box with an embedded arrow
 def chat_input_box(key, language, placeholder_text):
-    # CSS for the input box, textarea, and button inside the textarea
+    # CSS for the input box and button
     st.markdown("""
     <style>
     .input-container {
-        position: relative;
-        width: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: space-between;
+        border: 1px solid #CCC;
+        padding: 5px;
+        border-radius: 10px;
+        width: 100%;
     }
     .input-textarea {
         width: 100%;
+        border: none;
+        outline: none;
         padding: 10px;
         font-size: 16px;
-        border: 1px solid #CCC;
-        border-radius: 10px;
-        resize: none;
-        min-height: 50px;
-        max-height: 200px;
-        overflow-y: auto;
-        line-height: 1.5em;
-        box-sizing: border-box;
+        border-radius: 5px;
     }
-    .input-textarea:focus {
-        outline: none;
-        border-color: #4CAF50;
-    }
-    .input-arrow {
-        position: absolute;
-        right: 15px;
-        bottom: 10px;
+    .input-button {
         background-color: #4CAF50;
         border: none;
         color: white;
-        padding: 5px;
+        padding: 10px;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 16px;
-        height: 40px;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        font-size: 18px;
     }
-    .input-arrow:hover {
+    .input-button:hover {
         background-color: #45a049;
     }
     </style>
     """, unsafe_allow_html=True)
 
-    # HTML for the textarea with an embedded arrow button inside the textarea
-    query = st.text_area(placeholder_text, "", key=key, height=50)
-
-    # Initialize key in session state if it doesn't exist
-    if key not in st.session_state:
-        st.session_state[key] = ""
-
-    # Button to send the message
-    arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message")
-
-    # Check for arrow click or if the Enter key is pressed (simulate form submission)
-    if arrow_clicked:
-        if query.strip():  # Ensure the input is not empty
+    # HTML for the arrow button only
+    query = st.text_input(placeholder_text, "", key=key)
+    
+    if st.button("→", key=f"{key}_arrow"):
+        if query:
             response = get_chatbot_response(query, language=language)
             add_to_chat(query, response)
-            st.session_state[key] = ""  # Clear input after submission
             st.experimental_rerun()  # Rerun to display updated chat history
 
+# English Mental Health Q&A Session
+if selected == 'Mental Health Q&A (English)':
+    st.title("Mental Health Q&A (English)")
+    st.write("Ask me anything about mental health, and I will try to assist you with answers.")
+    
+    # Display chat input box for English with English placeholder
+    chat_input_box("chat_en", "en", "Type your message...")
 
-if 'button_disabled' not in st.session_state:
-    st.session_state['button_disabled'] = False
+# Kinyarwanda Ubuzima bwo mumutwe Session
+elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
+    st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
+    st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
 
-arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message", disabled=st.session_state['button_disabled'])
-
-if arrow_clicked:
-    st.session_state['button_disabled'] = True  # Disable button
-    if query.strip():
-        response = get_chatbot_response(query, language=language)
-        add_to_chat(query, response)
-        st.session_state[key] = ""
-        st.experimental_rerun() 
-    st.session_state['button_disabled'] = False  # Re-enable button after processing
-
-
-
+    # Display chat input box for Kinyarwanda with Kinyarwanda placeholder
+    chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
 
 
 

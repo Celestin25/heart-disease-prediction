@@ -68,7 +68,6 @@ if st.session_state['chat_history']:
         st.write(f"**You:** {chat['query']}")
         st.write(f"**Bot:** {chat['response']}")
 
-# Function to display chat input box with an embedded arrow inside the text area
 def chat_input_box(key, language, placeholder_text):
     # CSS for the input box, textarea, and button inside the textarea
     st.markdown("""
@@ -97,7 +96,7 @@ def chat_input_box(key, language, placeholder_text):
         outline: none;
         border-color: #4CAF50;
     }
-    .stButton button {
+    .input-arrow {
         position: absolute;
         right: 15px;
         bottom: 10px;
@@ -114,16 +113,20 @@ def chat_input_box(key, language, placeholder_text):
         align-items: center;
         justify-content: center;
     }
-    .stButton button:hover {
+    .input-arrow:hover {
         background-color: #45a049;
     }
     </style>
     """, unsafe_allow_html=True)
 
-    # HTML for the textarea
+    # HTML for the textarea with an embedded arrow button inside the textarea
     query = st.text_area(placeholder_text, "", key=key, height=50)
 
-    # Use a regular button, styled by the CSS
+    # Check if key exists in session state and initialize if not
+    if key not in st.session_state:
+        st.session_state[key] = ""
+
+    # Use a regular button positioned separately as an arrow
     arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message")
     
     # Check for arrow click or if the Enter key is pressed (simulate form submission)
@@ -133,6 +136,7 @@ def chat_input_box(key, language, placeholder_text):
             add_to_chat(query, response)
             st.session_state[key] = ""  # Clear input after submission
             st.experimental_rerun()  # Rerun to display updated chat history
+
 
 
 

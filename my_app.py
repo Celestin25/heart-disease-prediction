@@ -49,14 +49,14 @@ st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_ico
 
 with st.sidebar:
     selected = option_menu('Mental Health Assistant', 
-                           ['Mental Health Q&A (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                           ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
                            menu_icon='hospital-fill', 
                            icons=['info-circle', 'info-circle'], 
                            default_index=0)
 
 # English Mental Health Q&A Session
-if selected == 'Mental Health Q&A (English)':
-    st.title("Mental Health Q&A (English)")
+if selected == 'Mental Health (English)':
+    st.title("Mental Health (English)")
     st.write("Ask me anything about mental health, and I will try to assist you with answers.")
 
     user_query_en = st.text_input("Your Question:")
@@ -66,7 +66,7 @@ if selected == 'Mental Health Q&A (English)':
 
 # Kinyarwanda Ubuzima bwo mumutwe Session
 elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-    st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
+    st.title("Ubuzima bwo mumutwe -(Kinyarwanda)")
     st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
 
     user_query_rw = st.text_input("Ikibazo cyawe:")

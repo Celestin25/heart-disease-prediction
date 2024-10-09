@@ -68,6 +68,7 @@ if st.session_state['chat_history']:
         st.write(f"**You:** {chat['query']}")
         st.write(f"**Bot:** {chat['response']}")
 
+# Function to display chat input box with an embedded arrow
 def chat_input_box(key, language, placeholder_text):
     # CSS for the input box and button
     st.markdown("""
@@ -97,46 +98,15 @@ def chat_input_box(key, language, placeholder_text):
         border-radius: 50%;
         cursor: pointer;
         font-size: 18px;
-        position: relative;
     }
     .input-button:hover {
         background-color: #45a049;
     }
-    .tooltip {
-        visibility: hidden;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%; /* Position the tooltip above the button */
-        left: 50%;
-        margin-left: -60px;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    .input-button:hover .tooltip {
-        visibility: visible;
-        opacity: 1;
-    }
     </style>
     """, unsafe_allow_html=True)
 
-    # HTML for the arrow button with tooltip
+    # HTML for the arrow button only
     query = st.text_input(placeholder_text, "", key=key)
-    
-    button_html = f"""
-    <div class="input-button">
-        <button type="button" key="{key}_arrow" style="border: none; background: none; cursor: pointer;">
-            →
-        </button>
-        <span class="tooltip">Send message for English session<br>Ohereza ubutumwa</span>
-    </div>
-    """
-    
-    st.markdown(button_html, unsafe_allow_html=True)
     
     if st.button("→", key=f"{key}_arrow"):
         if query:

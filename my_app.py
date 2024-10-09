@@ -74,10 +74,11 @@ def chat_input_box(key, language, placeholder_text):
     st.markdown("""
     <style>
     .input-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        position: relative;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .input-textarea {
         width: 100%;
@@ -89,7 +90,8 @@ def chat_input_box(key, language, placeholder_text):
         min-height: 50px;
         max-height: 200px;
         overflow-y: auto;
-        position: relative;
+        line-height: 1.5em;
+        box-sizing: border-box;
     }
     .input-textarea:focus {
         outline: none;
@@ -97,15 +99,17 @@ def chat_input_box(key, language, placeholder_text):
     }
     .input-arrow {
         position: absolute;
-        right: 10px;
+        right: 15px;
         bottom: 10px;
         background-color: #4CAF50;
         border: none;
         color: white;
-        padding: 10px;
+        padding: 5px;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 16px;
+        height: 40px;
+        width: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -118,8 +122,9 @@ def chat_input_box(key, language, placeholder_text):
 
     # HTML for the textarea with an embedded arrow button inside the textarea
     query = st.text_area(placeholder_text, "", key=key, height=50)
-    
-    arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message")
+
+    # Use a regular button positioned separately as an arrow
+    arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message", css_class="input-arrow")
     
     # Check for arrow click or if the Enter key is pressed (simulate form submission)
     if arrow_clicked or (query and st.session_state.get(f"{key}_enter", False)):
@@ -128,6 +133,7 @@ def chat_input_box(key, language, placeholder_text):
             add_to_chat(query, response)
             st.session_state[key] = ""  # Clear input after submission
             st.experimental_rerun()  # Rerun to display updated chat history
+
 
 # Example of how to use the function for English and Kinyarwanda sessions
 if selected == 'Mental Health Q&A (English)':

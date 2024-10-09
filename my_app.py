@@ -68,26 +68,70 @@ if st.session_state['chat_history']:
         st.write(f"**You:** {chat['query']}")
         st.write(f"**Bot:** {chat['response']}")
 
+# Function to display chat input box with an embedded arrow
+def chat_input_box(key, language):
+    # CSS for text area and button
+    st.markdown("""
+    <style>
+    .input-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #CCC;
+        padding: 5px;
+        border-radius: 10px;
+        width: 100%;
+    }
+    .input-textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    .input-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    .input-button:hover {
+        background-color: #45a049;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # HTML for the text area and arrow button
+    query = st.text_input("", "", key=key)
+    st.markdown(f"""
+    <div class="input-container">
+        <textarea class="input-textarea" id="{key}_input" placeholder="Type your message..."></textarea>
+        <button class="input-button" onclick="document.getElementById('{key}_submit').click()">→</button>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if st.button("Send", key=f"{key}_submit"):
+        if query:
+            response = get_chatbot_response(query, language=language)
+            add_to_chat(query, response)
+            st.experimental_rerun()  # Rerun to display updated chat history
+
 # English Mental Health Q&A Session
 if selected == 'Mental Health Q&A (English)':
     st.title("Mental Health Q&A (English)")
     st.write("Ask me anything about mental health, and I will try to assist you with answers.")
-
-    user_query_en = st.text_area("Your Question:", "", height=100)
-    if st.button("Send", key='send_en'):
-        if user_query_en:
-            response_en = get_chatbot_response(user_query_en, language='en')
-            add_to_chat(user_query_en, response_en)
-            st.experimental_rerun()  # Rerun to display updated chat history
+    
+    # Display chat input box for English
+    chat_input_box("chat_en", "en")
 
 # Kinyarwanda Ubuzima bwo mumutwe Session
 elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
     st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
     st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
 
-    user_query_rw = st.text_area("Ikibazo cyawe:", "", height=100)
-    if st.button("Ohereza", key='send_rw'):
-        if user_query_rw:
-            response_rw = get_chatbot_response(user_query_rw, language='rw')
-            add_to_chat(user_query_rw, response_rw)
-            st.experimental_rerun()  # Rerun to display updated chat history
+    # Display chat input box for Kinyarwanda
+    chat_input_box("chat_rw", "rw")

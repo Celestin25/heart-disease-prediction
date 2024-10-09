@@ -132,19 +132,6 @@ elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
 
 
 
-# Example of how to use the function for English and Kinyarwanda sessions
-if selected == 'Mental Health Q&A (English)':
-    st.title("Mental Health Q&A (English)")
-    st.write("Ask me anything about mental health, and I will try to assist you with answers.")
-    
-    # Display chat input box for English
-    chat_input_box("chat_en", "en", "Type your message...")
 
-elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-    st.title("Ubuzima bwo mumutwe - Ibibazo n'Ibisubizo (Kinyarwanda)")
-    st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
-    
-    # Display chat input box for Kinyarwanda
-    chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
 
 

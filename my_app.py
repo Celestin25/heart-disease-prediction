@@ -138,6 +138,22 @@ def chat_input_box(key, language, placeholder_text):
             st.experimental_rerun()  # Rerun to display updated chat history
 
 
+if 'button_disabled' not in st.session_state:
+    st.session_state['button_disabled'] = False
+
+arrow_clicked = st.button("→", key=f"{key}_arrow", help="Send Message", disabled=st.session_state['button_disabled'])
+
+if arrow_clicked:
+    st.session_state['button_disabled'] = True  # Disable button
+    if query.strip():
+        response = get_chatbot_response(query, language=language)
+        add_to_chat(query, response)
+        st.session_state[key] = ""
+        st.experimental_rerun() 
+    st.session_state['button_disabled'] = False  # Re-enable button after processing
+
+
+
 
 
 

@@ -1,16 +1,16 @@
-import os
-import json
-import re
-import streamlit as st
-from streamlit_option_menu import option_menu
-import hashlib  # For hashing passwords
+# import os
+# import json
+# import re
+# import streamlit as st
+# from streamlit_option_menu import option_menu
+# import hashlib  # For hashing passwords
 
-# Load necessary files and data
-working_dir = os.path.dirname(os.path.abspath(__file__))
+# # Load necessary files and data
+# working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Function to hash passwords (for added security)
-def hash_password(password):
-    return hashlib.sha256(password.encode()).hexdigest()
+# # Function to hash passwords (for added security)
+# def hash_password(password):
+#     return hashlib.sha256(password.encode()).hexdigest()
 
 # Load user credentials from a JSON file
 def load_user_credentials():

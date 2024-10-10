@@ -161,11 +161,18 @@ def run_app():
         # Display chat input box for Kinyarwanda with Kinyarwanda placeholder
         chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
 
+# Display login or signup in the sidebar if not authenticated
+def display_auth_menu():
+    with st.sidebar:
+        auth_choice = option_menu('Account', ['Login', 'Sign Up'], icons=['box-arrow-in-right', 'person-plus'])
+
+    if auth_choice == 'Login':
+        login()
+    elif auth_choice == 'Sign Up':
+        signup()
+
 # Check if the user is authenticated before running the main app
 if 'authenticated' not in st.session_state or not st.session_state['authenticated']:
-    if 'signup_complete' not in st.session_state:
-        signup()
-    if st.session_state.get('signup_complete'):
-        login()
+    display_auth_menu()
 else:
     run_app()

@@ -115,64 +115,44 @@ def run_app():
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
     with st.sidebar:
-        selected = option_menu('Mental Health Assistant', 
-                               ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+        selected = option_menu('Menu', 
+                               ['Login', 'Sign Up', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
                                menu_icon='hospital-fill', 
-                               icons=['info-circle', 'info-circle'], 
+                               icons=['box-arrow-in-right', 'person-plus', 'info-circle', 'info-circle'], 
                                default_index=0)
 
-    # Initialize session state to keep track of chat history
+    # Handle Login and Sign-up
+    if selected == 'Sign Up':
+        signup()
+    elif selected == 'Login':
+        login()
+    elif 'authenticated' in st.session_state and st.session_state['authenticated']:
+        if selected == 'Mental Health (English)':
+            st.title("Mental Health (English)")
+            chat_input_box("chat_en", "en", "Type your message...")
+        elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
+            st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
+            chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
+    else:
+        st.info("Please log in to access the chatbot features.")
+
+# Function to display chat input box
+def chat_input_box(key, language, placeholder_text):
+    query = st.text_input(placeholder_text, "", key=key)
+    if st.button("→", key=f"{key}_arrow"):
+        if query:
+            response = get_chatbot_response(query, language=language)
+            add_to_chat(query, response)
+            st.experimental_rerun()  # Rerun to display updated chat history
+
+# Keep track of chat history in session state
+def add_to_chat(user_query, response):
     if 'chat_history' not in st.session_state:
         st.session_state['chat_history'] = []
-
-    # Define function to add question and response to the chat history
-    def add_to_chat(user_query, response):
-        st.session_state['chat_history'].append({"query": user_query, "response": response})
-
-    # Display chat history
-    if st.session_state['chat_history']:
-        for chat in st.session_state['chat_history']:
-            st.write(f"**You:** {chat['query']}")
-            st.write(f"**Bot:** {chat['response']}")
-
-    # Function to display chat input box with an embedded arrow
-    def chat_input_box(key, language, placeholder_text):
-        query = st.text_input(placeholder_text, "", key=key)
-        
-        if st.button("→", key=f"{key}_arrow"):
-            if query:
-                response = get_chatbot_response(query, language=language)
-                add_to_chat(query, response)
-                st.experimental_rerun()  # Rerun to display updated chat history
-
-    # English Mental Health Q&A Session
-    if selected == 'Mental Health (English)':
-        st.title("Mental Health (English)")
-        st.write("Ask me anything about mental health, and I will try to assist you with answers.")
-        
-        # Display chat input box for English with English placeholder
-        chat_input_box("chat_en", "en", "Type your message...")
-
-    # Kinyarwanda Ubuzima bwo mumutwe Session
-    elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-        st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
-        st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
-
-        # Display chat input box for Kinyarwanda with Kinyarwanda placeholder
-        chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
-
-# Display login or signup in the sidebar if not authenticated
-def display_auth_menu():
-    with st.sidebar:
-        auth_choice = option_menu('Account', ['Login', 'Sign Up'], icons=['box-arrow-in-right', 'person-plus'])
-
-    if auth_choice == 'Login':
-        login()
-    elif auth_choice == 'Sign Up':
-        signup()
+    st.session_state['chat_history'].append({"query": user_query, "response": response})
 
 # Check if the user is authenticated before running the main app
 if 'authenticated' not in st.session_state or not st.session_state['authenticated']:
-    display_auth_menu()
+    login()
 else:
     run_app()

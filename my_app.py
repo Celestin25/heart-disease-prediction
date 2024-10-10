@@ -3,45 +3,17 @@ import json
 import re
 import streamlit as st
 from streamlit_option_menu import option_menu
-import hashlib  # For hashing passwords
 
 # Load necessary files and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Function to hash passwords (for added security)
-def hash_password(password):
-    return hashlib.sha256(password.encode()).hexdigest()
-
-# Load user credentials from a JSON file
-def load_user_credentials():
-    credentials_file_path = os.path.join(working_dir, 'credentials.json')
-    try:
-        with open(credentials_file_path, 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        return {}  # If no file exists, return an empty dictionary (no users exist yet)
-    except json.JSONDecodeError:
-        st.error("Error decoding the 'credentials.json' file. Please ensure it is in the correct JSON format.")
-        st.stop()
-
-# Save user credentials to a JSON file
-def save_user_credentials(credentials):
-    credentials_file_path = os.path.join(working_dir, 'credentials.json')
-    with open(credentials_file_path, 'w') as file:
-        json.dump(credentials, file)
+# Hardcoded credentials for testing
+HARD_CODED_USERNAME = "testuser"
+HARD_CODED_PASSWORD = "testpassword"
 
 # Validate user login with hardcoded credentials
 def validate_login(username, password):
-    # Hardcoded username and password for testing
-    hardcoded_username = "testuser"
-    hardcoded_password = "testpassword"
-
-    return username == hardcoded_username and password == hardcoded_password
-
-# Function to handle user signup (not in use for now)
-def signup(credentials):
-    st.subheader("Sign Up")
-    st.warning("Sign up functionality is currently disabled for testing purposes.")
+    return username == HARD_CODED_USERNAME and password == HARD_CODED_PASSWORD
 
 # Function to handle user login
 def login():
@@ -53,7 +25,7 @@ def login():
         if validate_login(username, password):
             st.success("Logged in successfully!")
             st.session_state['authenticated'] = True
-            st.experimental_rerun()
+            st.experimental_rerun()  # Rerun to load the main app
         else:
             st.error("Invalid username or password.")
 
@@ -98,26 +70,23 @@ def run_app():
             for pattern in intent['patterns']:
                 if re.search(pattern.lower(), user_query.lower()):
                     return intent['responses'][0]  # Return the first response
-        return "Sorry, I don't have an answer to that question. Please consult a professional." if language == 'en' else "Mbabarira, sinabashije kubona igisubizo cy'icyo kibazo. Mwihangane mubaze muganga."
+        return "Sorry, I don't have an answer to that question." if language == 'en' else "Mbabarira, sinabashije kubona igisubizo cy'icyo kibazo."
 
     # Streamlit setup
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
-    if 'authenticated' in st.session_state and st.session_state['authenticated']:
-        selected = option_menu('Menu', 
-                               ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
-                               menu_icon='hospital-fill', 
-                               icons=['info-circle', 'info-circle'], 
-                               default_index=0)
+    selected = option_menu('Menu', 
+                           ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                           menu_icon='hospital-fill', 
+                           icons=['info-circle', 'info-circle'], 
+                           default_index=0)
 
-        if selected == 'Mental Health (English)':
-            st.title("Mental Health (English)")
-            chat_input_box("chat_en", "en", "Type your message...")
-        elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)":
-            st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
-            chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
-    else:
-        login()
+    if selected == 'Mental Health (English)':
+        st.title("Mental Health (English)")
+        chat_input_box("chat_en", "en", "Type your message...")
+    elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
+        st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
+        chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
 
 # Function to display chat input box
 def chat_input_box(key, language, placeholder_text):
@@ -137,8 +106,9 @@ def add_to_chat(user_query, response):
 # Initialize session state variables
 if 'authenticated' not in st.session_state:
     st.session_state['authenticated'] = False
-if 'signup_complete' not in st.session_state:
-    st.session_state['signup_complete'] = False
 
 # Run the app
-run_app()
+if st.session_state['authenticated']:
+    run_app()
+else:
+    login()

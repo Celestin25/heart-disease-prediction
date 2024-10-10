@@ -3,130 +3,164 @@ import json
 import re
 import streamlit as st
 from streamlit_option_menu import option_menu
+import hashlib  # For hashing passwords
 
 # Load necessary files and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Load English Mental Health dataset (intents.json)
-intents_file_path_en = os.path.join(working_dir, 'intents.json')
-try:
-    with open(intents_file_path_en, 'r') as file:
-        intents_data_en = json.load(file)
-except FileNotFoundError:
-    st.error("The 'intents.json' file was not found. Please ensure it is placed in the correct directory.")
-    st.stop()
-except json.JSONDecodeError:
-    st.error("Error decoding the 'intents.json' file. Please ensure it is in the correct JSON format.")
-    st.stop()
+# Function to hash passwords (for added security)
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
 
-# Load Kinyarwanda Mental Health Q&A dataset (kiny.json)
-intents_file_path_rw = os.path.join(working_dir, 'kiny.json')
-try:
-    with open(intents_file_path_rw, 'r') as file:
-        intents_data_rw = json.load(file)
-except FileNotFoundError:
-    st.error("The 'kiny.json' file was not found. Please ensure it is placed in the correct directory.")
-    st.stop()
-except json.JSONDecodeError:
-    st.error("Error decoding the 'kiny.json' file. Please ensure it is in the correct JSON format.")
-    st.stop()
+# Load user credentials from a JSON file
+def load_user_credentials():
+    credentials_file_path = os.path.join(working_dir, 'credentials.json')
+    try:
+        with open(credentials_file_path, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}  # If no file exists, return an empty dictionary (no users exist yet)
+    except json.JSONDecodeError:
+        st.error("Error decoding the 'credentials.json' file. Please ensure it is in the correct JSON format.")
+        st.stop()
 
-# Helper function to get chatbot response based on language
-def get_chatbot_response(user_query, language='en'):
-    if language == 'en':
-        intents_data = intents_data_en
+# Save user credentials to a JSON file
+def save_user_credentials(credentials):
+    credentials_file_path = os.path.join(working_dir, 'credentials.json')
+    with open(credentials_file_path, 'w') as file:
+        json.dump(credentials, file)
+
+# Validate user login
+def validate_login(username, password, credentials):
+    hashed_password = hash_password(password)
+    return username in credentials and credentials[username] == hashed_password
+
+# Sign up function to register new users
+def signup():
+    st.subheader("Sign Up")
+    username = st.text_input("Create Username")
+    password = st.text_input("Create Password", type="password")
+    confirm_password = st.text_input("Confirm Password", type="password")
+    credentials = load_user_credentials()
+
+    if st.button("Sign Up"):
+        if username in credentials:
+            st.error("Username already exists. Please choose a different one.")
+        elif password != confirm_password:
+            st.error("Passwords do not match.")
+        else:
+            credentials[username] = hash_password(password)
+            save_user_credentials(credentials)
+            st.success("Sign-up successful! Please log in.")
+            st.session_state['signup_complete'] = True
+            st.experimental_rerun()
+
+# Login function to authenticate existing users
+def login():
+    st.subheader("Login")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    credentials = load_user_credentials()
+
+    if st.button("Login"):
+        if validate_login(username, password, credentials):
+            st.success("Logged in successfully!")
+            st.session_state['authenticated'] = True
+            st.experimental_rerun()
+        else:
+            st.error("Invalid username or password.")
+
+# Load datasets for chatbot (if authenticated)
+def load_datasets():
+    intents_file_path_en = os.path.join(working_dir, 'intents.json')
+    intents_file_path_rw = os.path.join(working_dir, 'kiny.json')
+
+    try:
+        with open(intents_file_path_en, 'r') as file:
+            intents_data_en = json.load(file)
+    except FileNotFoundError:
+        st.error("The 'intents.json' file was not found. Please ensure it is placed in the correct directory.")
+        st.stop()
+    except json.JSONDecodeError:
+        st.error("Error decoding the 'intents.json' file. Please ensure it is in the correct JSON format.")
+        st.stop()
+
+    try:
+        with open(intents_file_path_rw, 'r') as file:
+            intents_data_rw = json.load(file)
+    except FileNotFoundError:
+        st.error("The 'kiny.json' file was not found. Please ensure it is placed in the correct directory.")
+        st.stop()
+    except json.JSONDecodeError:
+        st.error("Error decoding the 'kiny.json' file. Please ensure it is in the correct JSON format.")
+        st.stop()
+
+    return intents_data_en, intents_data_rw
+
+# Main app logic (if authenticated)
+def run_app():
+    intents_data_en, intents_data_rw = load_datasets()
+
+    def get_chatbot_response(user_query, language='en'):
+        if language == 'en':
+            intents_data = intents_data_en
+        else:
+            intents_data = intents_data_rw
+
+        for intent in intents_data['intents']:
+            for pattern in intent['patterns']:
+                if re.search(pattern.lower(), user_query.lower()):
+                    return intent['responses'][0]  # Return the first response
+        return "Sorry, I don't have an answer to that question. Please consult a professional." if language == 'en' else "Mbabarira, sinabashije kubona igisubizo cy'icyo kibazo. Mwihangane mubaze muganga."
+
+    # Streamlit setup
+    st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
+
+    with st.sidebar:
+        selected = option_menu('Menu', 
+                               ['Login', 'Sign Up', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                               menu_icon='hospital-fill', 
+                               icons=['box-arrow-in-right', 'person-plus', 'info-circle', 'info-circle'], 
+                               default_index=0)
+
+    # Handle Login and Sign-up
+    if selected == 'Sign Up':
+        signup()
+    elif selected == 'Login':
+        login()
+    elif 'authenticated' in st.session_state and st.session_state['authenticated']:
+        if selected == 'Mental Health (English)':
+            st.title("Mental Health (English)")
+            chat_input_box("chat_en", "en", "Type your message...")
+        elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
+            st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
+            chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
     else:
-        intents_data = intents_data_rw
+        st.info("Please log in to access the chatbot features.")
 
-    for intent in intents_data['intents']:
-        for pattern in intent['patterns']:
-            if re.search(pattern.lower(), user_query.lower()):
-                return intent['responses'][0]  # Return the first response
-    return "Sorry, I don't have an answer to that question. Please consult a professional." if language == 'en' else "Mbabarira, sinabashije kubona igisubizo cy'icyo kibazo. Mwihangane mubaze muganga."
-
-# Streamlit setup
-st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
-
-with st.sidebar:
-    selected = option_menu('Mental Health Assistant', 
-                           ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
-                           menu_icon='hospital-fill', 
-                           icons=['info-circle', 'info-circle'], 
-                           default_index=0)
-
-# Initialize session state to keep track of chat history
-if 'chat_history' not in st.session_state:
-    st.session_state['chat_history'] = []
-
-# Define function to add question and response to the chat history
-def add_to_chat(user_query, response):
-    st.session_state['chat_history'].append({"query": user_query, "response": response})
-
-# Display chat history
-if st.session_state['chat_history']:
-    for chat in st.session_state['chat_history']:
-        st.write(f"**You:** {chat['query']}")
-        st.write(f"**Bot:** {chat['response']}")
-
-# Function to display chat input box with an embedded arrow
+# Function to display chat input box
 def chat_input_box(key, language, placeholder_text):
-    # CSS for the input box and button
-    st.markdown("""
-    <style>
-    .input-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 1px solid #CCC;
-        padding: 5px;
-        border-radius: 10px;
-        width: 100%;
-    }
-    .input-textarea {
-        width: 100%;
-        border: none;
-        outline: none;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-    }
-    .input-button {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 18px;
-    }
-    .input-button:hover {
-        background-color: #45a049;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    # HTML for the arrow button only
     query = st.text_input(placeholder_text, "", key=key)
-    
     if st.button("→", key=f"{key}_arrow"):
         if query:
             response = get_chatbot_response(query, language=language)
             add_to_chat(query, response)
             st.experimental_rerun()  # Rerun to display updated chat history
 
+# Keep track of chat history in session state
+def add_to_chat(user_query, response):
+    if 'chat_history' not in st.session_state:
+        st.session_state['chat_history'] = []
+    st.session_state['chat_history'].append({"query": user_query, "response": response})
 
-# English Mental Health Q&A Session
-if selected == 'Mental Health (English)':
-    st.title("Mental Health (English)")
-    st.write("Ask me anything about mental health, and I will try to assist you with answers.")
-    
-    # Display chat input box for English with English placeholder
-    chat_input_box("chat_en", "en", "Type your message...")
+# Initialize session state variables
+if 'authenticated' not in st.session_state:
+    st.session_state['authenticated'] = False
+if 'signup_complete' not in st.session_state:
+    st.session_state['signup_complete'] = False
 
-# Kinyarwanda Ubuzima bwo mumutwe Session
-elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-    st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
-    st.write("Mumbaze ibibazo byose bijyanye n'ubuzima bwo mumutwe, kandi ngerageze kubisubiza.")
-
-    # Display chat input box for Kinyarwanda with Kinyarwanda placeholder
-    chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
+# Check if the user is authenticated before running the main app
+if 'authenticated' not in st.session_state or not st.session_state['authenticated']:
+    login()
+else:
+    run_app()

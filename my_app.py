@@ -34,7 +34,7 @@ def save_user_credentials(credentials):
 def validate_login(username, password):
     # Hardcoded username and password for testing
     hardcoded_username = "testuser"
-    hardcoded_password = "testpassword"  # This password will be hashed
+    hardcoded_password = "testpassword"
 
     return username == hardcoded_username and password == hardcoded_password
 
@@ -103,9 +103,6 @@ def run_app():
     # Streamlit setup
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
-    # Handle Login
-    login()
-
     if 'authenticated' in st.session_state and st.session_state['authenticated']:
         selected = option_menu('Menu', 
                                ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
@@ -116,11 +113,11 @@ def run_app():
         if selected == 'Mental Health (English)':
             st.title("Mental Health (English)")
             chat_input_box("chat_en", "en", "Type your message...")
-        elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
+        elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)":
             st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
             chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
     else:
-        st.info("Please log in to access the chatbot features.")
+        login()
 
 # Function to display chat input box
 def chat_input_box(key, language, placeholder_text):

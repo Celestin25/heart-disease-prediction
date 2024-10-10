@@ -30,38 +30,27 @@ def save_user_credentials(credentials):
     with open(credentials_file_path, 'w') as file:
         json.dump(credentials, file)
 
-# Validate user login
-def validate_login(username, password, credentials):
-    hashed_password = hash_password(password)
-    return username in credentials and credentials[username] == hashed_password
+# Validate user login with hardcoded credentials
+def validate_login(username, password):
+    # Hardcoded username and password for testing
+    hardcoded_username = "testuser"
+    hardcoded_password = "testpassword"  # This password will be hashed
 
-# Function to handle user signup
+    return username == hardcoded_username and hash_password(password) == hash_password(hardcoded_password)
+
+# Function to handle user signup (not in use for now)
 def signup(credentials):
     st.subheader("Sign Up")
-    username = st.text_input("Create Username")
-    password = st.text_input("Create Password", type="password")
-    confirm_password = st.text_input("Confirm Password", type="password")
-
-    if st.button("Sign Up"):
-        if username in credentials:
-            st.error("Username already exists. Please choose a different one.")
-        elif password != confirm_password:
-            st.error("Passwords do not match.")
-        else:
-            credentials[username] = hash_password(password)
-            save_user_credentials(credentials)
-            st.success("Sign-up successful! Please log in.")
-            st.session_state['signup_complete'] = True
-            st.experimental_rerun()
+    st.warning("Sign up functionality is currently disabled for testing purposes.")
 
 # Function to handle user login
-def login(credentials):
+def login():
     st.subheader("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
-        if validate_login(username, password, credentials):
+        if validate_login(username, password):
             st.success("Logged in successfully!")
             st.session_state['authenticated'] = True
             st.experimental_rerun()
@@ -114,16 +103,8 @@ def run_app():
     # Streamlit setup
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
-    # Handle Sign Up and Login in tabs
-    tab1, tab2 = st.tabs(["Sign Up", "Login"])
-    
-    credentials = load_user_credentials()
-
-    with tab1:
-        signup(credentials)
-
-    with tab2:
-        login(credentials)
+    # Handle Login
+    login()
 
     if 'authenticated' in st.session_state and st.session_state['authenticated']:
         selected = option_menu('Menu', 
@@ -139,7 +120,7 @@ def run_app():
             st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
             chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
     else:
-        st.info("Please sign up or log in to access the chatbot features.")
+        st.info("Please log in to access the chatbot features.")
 
 # Function to display chat input box
 def chat_input_box(key, language, placeholder_text):

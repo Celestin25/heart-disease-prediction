@@ -35,13 +35,12 @@ def validate_login(username, password, credentials):
     hashed_password = hash_password(password)
     return username in credentials and credentials[username] == hashed_password
 
-# Sign up function to register new users
-def signup():
+# Function to handle user signup
+def signup(credentials):
     st.subheader("Sign Up")
     username = st.text_input("Create Username")
     password = st.text_input("Create Password", type="password")
     confirm_password = st.text_input("Confirm Password", type="password")
-    credentials = load_user_credentials()
 
     if st.button("Sign Up"):
         if username in credentials:
@@ -55,12 +54,11 @@ def signup():
             st.session_state['signup_complete'] = True
             st.experimental_rerun()
 
-# Login function to authenticate existing users
-def login():
+# Function to handle user login
+def login(credentials):
     st.subheader("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
-    credentials = load_user_credentials()
 
     if st.button("Login"):
         if validate_login(username, password, credentials):
@@ -116,20 +114,24 @@ def run_app():
     # Streamlit setup
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
-    with st.sidebar:
-        # Modify the default_index to 0 to start with 'Sign Up'
+    # Handle Sign Up and Login in tabs
+    tab1, tab2 = st.tabs(["Sign Up", "Login"])
+    
+    credentials = load_user_credentials()
+
+    with tab1:
+        signup(credentials)
+
+    with tab2:
+        login(credentials)
+
+    if 'authenticated' in st.session_state and st.session_state['authenticated']:
         selected = option_menu('Menu', 
-                               ['Sign Up', 'Login', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                               ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
                                menu_icon='hospital-fill', 
-                               icons=['person-plus', 'box-arrow-in-right', 'info-circle', 'info-circle'], 
+                               icons=['info-circle', 'info-circle'], 
                                default_index=0)
 
-    # Handle Sign Up and Login
-    if selected == 'Sign Up':
-        signup()
-    elif selected == 'Login':
-        login()
-    elif 'authenticated' in st.session_state and st.session_state['authenticated']:
         if selected == 'Mental Health (English)':
             st.title("Mental Health (English)")
             chat_input_box("chat_en", "en", "Type your message...")
@@ -138,7 +140,6 @@ def run_app():
             chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
     else:
         st.info("Please sign up or log in to access the chatbot features.")
-
 
 # Function to display chat input box
 def chat_input_box(key, language, placeholder_text):
@@ -161,8 +162,5 @@ if 'authenticated' not in st.session_state:
 if 'signup_complete' not in st.session_state:
     st.session_state['signup_complete'] = False
 
-# Check if the user is authenticated before running the main app
-if 'authenticated' not in st.session_state or not st.session_state['authenticated']:
-    login()
-else:
-    run_app()
+# Run the app
+run_app()

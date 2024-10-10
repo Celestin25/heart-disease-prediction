@@ -117,13 +117,14 @@ def run_app():
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
     with st.sidebar:
+        # Modify the default_index to 0 to start with 'Sign Up'
         selected = option_menu('Menu', 
-                               ['Login', 'Sign Up', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                               ['Sign Up', 'Login', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
                                menu_icon='hospital-fill', 
-                               icons=['box-arrow-in-right', 'person-plus', 'info-circle', 'info-circle'], 
+                               icons=['person-plus', 'box-arrow-in-right', 'info-circle', 'info-circle'], 
                                default_index=0)
 
-    # Handle Login and Sign-up
+    # Handle Sign Up and Login
     if selected == 'Sign Up':
         signup()
     elif selected == 'Login':
@@ -136,7 +137,8 @@ def run_app():
             st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
             chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
     else:
-        st.info("Please log in to access the chatbot features.")
+        st.info("Please sign up or log in to access the chatbot features.")
+
 
 # Function to display chat input box
 def chat_input_box(key, language, placeholder_text):

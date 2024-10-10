@@ -3,12 +3,12 @@ import json
 import re
 import streamlit as st
 from streamlit_option_menu import option_menu
-import hashlib  # For hashing passwords (optional, but recommended for better security)
+import hashlib  # For hashing passwords
 
 # Load necessary files and data
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Function to hash passwords (optional, for added security)
+# Function to hash passwords (for added security)
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -19,18 +19,42 @@ def load_user_credentials():
         with open(credentials_file_path, 'r') as file:
             return json.load(file)
     except FileNotFoundError:
-        st.error("The 'credentials.json' file was not found. Please ensure it is placed in the correct directory.")
-        st.stop()
+        return {}  # If no file exists, return an empty dictionary (no users exist yet)
     except json.JSONDecodeError:
         st.error("Error decoding the 'credentials.json' file. Please ensure it is in the correct JSON format.")
         st.stop()
+
+# Save user credentials to a JSON file
+def save_user_credentials(credentials):
+    credentials_file_path = os.path.join(working_dir, 'credentials.json')
+    with open(credentials_file_path, 'w') as file:
+        json.dump(credentials, file)
 
 # Validate user login
 def validate_login(username, password, credentials):
     hashed_password = hash_password(password)
     return username in credentials and credentials[username] == hashed_password
 
-# Authentication function
+# Sign up function to register new users
+def signup():
+    st.subheader("Sign Up")
+    username = st.text_input("Create Username")
+    password = st.text_input("Create Password", type="password")
+    confirm_password = st.text_input("Confirm Password", type="password")
+    credentials = load_user_credentials()
+
+    if st.button("Sign Up"):
+        if username in credentials:
+            st.error("Username already exists. Please choose a different one.")
+        elif password != confirm_password:
+            st.error("Passwords do not match.")
+        else:
+            credentials[username] = hash_password(password)
+            save_user_credentials(credentials)
+            st.success("Sign-up successful! Please log in.")
+            st.session_state['signup_complete'] = True
+
+# Login function to authenticate existing users
 def login():
     st.subheader("Login")
     username = st.text_input("Username")
@@ -42,7 +66,7 @@ def login():
             st.success("Logged in successfully!")
             st.session_state['authenticated'] = True
         else:
-            st.error("Invalid username or password")
+            st.error("Invalid username or password.")
 
 # Load datasets for chatbot (if authenticated)
 def load_datasets():
@@ -139,6 +163,9 @@ def run_app():
 
 # Check if the user is authenticated before running the main app
 if 'authenticated' not in st.session_state or not st.session_state['authenticated']:
-    login()
+    if 'signup_complete' not in st.session_state:
+        signup()
+    if st.session_state.get('signup_complete'):
+        login()
 else:
     run_app()

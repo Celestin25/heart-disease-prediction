@@ -36,7 +36,7 @@ def validate_login(username, password):
     hardcoded_username = "testuser"
     hardcoded_password = "testpassword"  # This password will be hashed
 
-    return username == hardcoded_username and hash_password(password) == hash_password(hardcoded_password)
+    return username == hardcoded_username and password == hardcoded_password
 
 # Function to handle user signup (not in use for now)
 def signup(credentials):

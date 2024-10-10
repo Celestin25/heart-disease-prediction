@@ -114,27 +114,23 @@ def run_app():
     # Streamlit setup
     st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
 
-    with st.sidebar:
-        selected = option_menu('Menu', 
-                               ['Login', 'Sign Up', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
-                               menu_icon='hospital-fill', 
-                               icons=['box-arrow-in-right', 'person-plus', 'info-circle', 'info-circle'], 
-                               default_index=0)
+    # Sidebar menu
+with st.sidebar:
+    selected = option_menu('Menu', 
+                           ['Login', 'Sign Up', 'Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 
+                           menu_icon='hospital-fill', 
+                           icons=['box-arrow-in-right', 'person-plus', 'info-circle', 'info-circle'], 
+                           default_index=0)
 
-    # Handle Login and Sign-up
-    if selected == 'Sign Up':
-        signup()
-    elif selected == 'Login':
-        login()
-    elif 'authenticated' in st.session_state and st.session_state['authenticated']:
-        if selected == 'Mental Health (English)':
-            st.title("Mental Health (English)")
-            chat_input_box("chat_en", "en", "Type your message...")
-        elif selected == 'Ubuzima bwo mumutwe (Kinyarwanda)':
-            st.title("Ubuzima bwo mumutwe (Kinyarwanda)")
-            chat_input_box("chat_rw", "rw", "Andika ubutumwa bwawe ...")
-    else:
-        st.info("Please log in to access the chatbot features.")
+# Authentication logic
+if selected == 'Sign Up':
+    signup()
+elif selected == 'Login':
+    login()
+elif 'authenticated' in st.session_state and st.session_state['authenticated']:
+    run_app()
+else:
+    st.info("Please log in to access the chatbot features.")
 
 # Function to display chat input box
 def chat_input_box(key, language, placeholder_text):

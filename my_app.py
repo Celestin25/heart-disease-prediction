@@ -41,10 +41,18 @@ def login():
 # Function for sign-up
 def signup():
     st.title("Sign Up")
-    new_username = st.text_input("Create a Username", key="signup_username")
-    new_password = st.text_input("Create a Password", type="password", key="signup_password")
+    # Use session state to store values while typing to avoid page re-runs
+    if 'new_username' not in st.session_state:
+        st.session_state['new_username'] = ""
+    if 'new_password' not in st.session_state:
+        st.session_state['new_password'] = ""
+
+    st.session_state['new_username'] = st.text_input("Create a Username", value=st.session_state['new_username'], key="signup_username")
+    st.session_state['new_password'] = st.text_input("Create a Password", type="password", value=st.session_state['new_password'], key="signup_password")
     
     if st.button("Sign Up"):
+        new_username = st.session_state['new_username']
+        new_password = st.session_state['new_password']
         if new_username in user_credentials:
             st.error("Username already exists! Try another one.")
         elif new_username and new_password:
@@ -52,7 +60,9 @@ def signup():
             st.session_state['new_user'] = True
             st.success("Sign-up successful! Please log in.")
             st.session_state['current_page'] = "login"  # Redirect to login after sign-up
-            st.experimental_rerun()  # Rerun to display login
+            # Clear the session state for the sign-up form
+            st.session_state['new_username'] = ""
+            st.session_state['new_password'] = ""
         else:
             st.error("Please fill in all fields!")
 

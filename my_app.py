@@ -3,6 +3,7 @@ import json
 import re
 import random
 import streamlit as st
+from fuzzywuzzy import fuzz
 from streamlit_option_menu import option_menu
 
 # Set page configuration at the very top
@@ -75,7 +76,7 @@ def main_page():
     if st.sidebar.button("Logout"):
         logout()
 
-# Improved chatbot response based on dataset
+# Improved chatbot response based on dataset with fuzzy matching
 def get_chatbot_response(user_query, language='en'):
     if language == 'en':
         intents_data = intents_data_en
@@ -85,15 +86,23 @@ def get_chatbot_response(user_query, language='en'):
     # Normalize user input
     user_query = user_query.lower()
 
+    best_match = None
+    highest_ratio = 0
+
     # Iterate over intents and patterns
     for intent in intents_data['intents']:
         for pattern in intent['patterns']:
-            # Use regex to check for a match
-            if re.search(r'\b' + re.escape(pattern.lower()) + r'\b', user_query):
-                # Return a random response from the list of responses
-                return random.choice(intent['responses'])
+            # Use fuzzy matching to find the closest match
+            match_ratio = fuzz.ratio(user_query, pattern.lower())
+            if match_ratio > highest_ratio:
+                highest_ratio = match_ratio
+                best_match = intent
 
-    # Fallback response if no pattern matches
+    # If a good match is found, return a random response
+    if best_match and highest_ratio > 75:  # Only match if similarity ratio is above 75%
+        return random.choice(best_match['responses'])
+
+    # Fallback response if no good match
     return "Sorry, I don't have an answer for that right now. Please consult a professional for more details."
 
 # Display login/signup page if not logged in

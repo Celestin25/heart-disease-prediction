@@ -34,8 +34,7 @@ def login():
     if submit_button:
         if username in user_credentials and user_credentials[username]['password'] == password:
             st.session_state['logged_in'] = True
-            st.session_state['current_page'] = "main"  # Explicitly set the current page to 'main'
-            st.success(f"Welcome, {username}!")
+            st.session_state['current_page'] = "main"  # Redirect to main page
             st.experimental_rerun()  # Rerun to display the main page
         else:
             st.error("Incorrect username or password!")
@@ -83,7 +82,7 @@ if not st.session_state['logged_in']:
         signup()
 
     # Sidebar to switch between login and sign-up
-    option = st.sidebar.radio("Choose an option", ["Login", "Sign Up"])
+    option = st.sidebar.radio("Choose an option", ["Login", "Sign Up"], index=0 if st.session_state['current_page'] == "login" else 1)
     
     if option == "Login":
         st.session_state['current_page'] = "login"

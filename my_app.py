@@ -17,6 +17,10 @@ if 'logged_in' not in st.session_state:
 if 'new_user' not in st.session_state:
     st.session_state['new_user'] = False
 
+if 'current_page' not in st.session_state:
+    st.session_state['current_page'] = "login"  # Default page to login
+
+# Function for login
 def login():
     st.title("Login")
     username = st.text_input("Username")
@@ -25,11 +29,13 @@ def login():
     if st.button("Login"):
         if username in user_credentials and user_credentials[username]['password'] == password:
             st.session_state['logged_in'] = True
+            st.session_state['current_page'] = "main"
             st.success(f"Welcome, {username}!")
-            st.experimental_rerun()
+            st.experimental_rerun()  # Rerun to display the main page
         else:
             st.error("Incorrect username or password!")
 
+# Function for sign-up
 def signup():
     st.title("Sign Up")
     new_username = st.text_input("Create a Username")
@@ -42,19 +48,30 @@ def signup():
             user_credentials[new_username] = {"password": new_password}
             st.session_state['new_user'] = True
             st.success("Sign-up successful! Please log in.")
-            st.experimental_rerun()
+            st.session_state['current_page'] = "login"  # Redirect to login after sign-up
+            st.experimental_rerun()  # Rerun to display login
 
-# Show login/signup options if not logged in
+# Function for logout
+def logout():
+    st.session_state['logged_in'] = False
+    st.session_state['current_page'] = "login"
+    st.experimental_rerun()  # Rerun to show the login page
+
+# Display login/signup page if not logged in
 if not st.session_state['logged_in']:
     option = st.sidebar.selectbox("Choose an option", ["Login", "Sign Up"])
-
-    if option == "Login":
+    
+    if option == "Login" and st.session_state['current_page'] == "login":
         login()
-    elif option == "Sign Up":
+    elif option == "Sign Up" and st.session_state['current_page'] == "signup":
         signup()
 
 # Proceed to main page if logged in
 if st.session_state['logged_in']:
+    # Display a logout button
+    if st.sidebar.button("Logout"):
+        logout()
+
     # Load necessary files and data
     working_dir = os.path.dirname(os.path.abspath(__file__))
 

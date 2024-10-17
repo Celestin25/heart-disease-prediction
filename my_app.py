@@ -1,6 +1,5 @@
 import os
 import json
-import re
 import random
 import difflib
 import streamlit as st
@@ -100,7 +99,7 @@ def get_chatbot_response(user_query, language='en'):
                 return random.choice(intent['responses'])
 
     # Fallback response if no good match
-    return "Sorry, I don't have an answer for that right now. Please consult a professional for more details."
+    return "Ndasaba imbabazi, sinshobora kubona igisubizo kuri ibyo. Nyamuneka wiyambaze umwuga w'ubuzima ku makuru menshi."  # Kinyarwanda fallback response
 
 # Display login/signup page if not logged in
 if not st.session_state['logged_in']:

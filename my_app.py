@@ -26,8 +26,8 @@ if 'current_page' not in st.session_state:
 # Function for login
 def login():
     st.title("Login")
-    username = st.text_input("Username", key="login_username")
-    password = st.text_input("Password", type="password", key="login_password")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
     
     if st.button("Login"):
         if username in user_credentials and user_credentials[username]['password'] == password:
@@ -41,20 +41,18 @@ def login():
 # Function for sign-up
 def signup():
     st.title("Sign Up")
-    new_username = st.text_input("Create a Username", key="signup_username")
-    new_password = st.text_input("Create a Password", type="password", key="signup_password")
+    new_username = st.text_input("Create a Username")
+    new_password = st.text_input("Create a Password", type="password")
     
     if st.button("Sign Up"):
         if new_username in user_credentials:
             st.error("Username already exists! Try another one.")
-        elif new_username and new_password:
+        else:
             user_credentials[new_username] = {"password": new_password}
             st.session_state['new_user'] = True
             st.success("Sign-up successful! Please log in.")
             st.session_state['current_page'] = "login"  # Redirect to login after sign-up
             st.experimental_rerun()  # Rerun to display login
-        else:
-            st.error("Please fill in all fields!")
 
 # Function for logout
 def logout():
@@ -62,14 +60,14 @@ def logout():
     st.session_state['current_page'] = "login"
     st.experimental_rerun()  # Rerun to show the login page
 
-# Display login/signup page if not logged in
-if not st.session_state['logged_in']:
-    if st.session_state['current_page'] == "login":
-        login()
-    elif st.session_state['current_page'] == "signup":
-        signup()
+# Control page switching logic
+if st.session_state['current_page'] == "login":
+    login()
+elif st.session_state['current_page'] == "signup":
+    signup()
 
-    # Sidebar to switch between login and sign-up
+# Sidebar for switching between Login and Sign-up
+if not st.session_state['logged_in']:
     option = st.sidebar.radio("Choose an option", ["Login", "Sign Up"])
     
     if option == "Login":
@@ -77,7 +75,7 @@ if not st.session_state['logged_in']:
     elif option == "Sign Up":
         st.session_state['current_page'] = "signup"
 
-# Proceed to main page if logged in
+# If logged in, show the main app page
 if st.session_state['logged_in']:
     # Display a logout button
     if st.sidebar.button("Logout"):

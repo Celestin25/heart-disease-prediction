@@ -26,10 +26,12 @@ if 'current_page' not in st.session_state:
 # Function for login
 def login():
     st.title("Login")
-    username = st.text_input("Username", key="login_username")
-    password = st.text_input("Password", type="password", key="login_password")
+    with st.form(key="login_form"):
+        username = st.text_input("Username", key="login_username")
+        password = st.text_input("Password", type="password", key="login_password")
+        submit_button = st.form_submit_button("Login")
     
-    if st.button("Login"):
+    if submit_button:
         if username in user_credentials and user_credentials[username]['password'] == password:
             st.session_state['logged_in'] = True
             st.session_state['current_page'] = "main"
@@ -41,18 +43,12 @@ def login():
 # Function for sign-up
 def signup():
     st.title("Sign Up")
-    # Use session state to store values while typing to avoid page re-runs
-    if 'new_username' not in st.session_state:
-        st.session_state['new_username'] = ""
-    if 'new_password' not in st.session_state:
-        st.session_state['new_password'] = ""
-
-    st.session_state['new_username'] = st.text_input("Create a Username", value=st.session_state['new_username'], key="signup_username")
-    st.session_state['new_password'] = st.text_input("Create a Password", type="password", value=st.session_state['new_password'], key="signup_password")
+    with st.form(key="signup_form"):
+        new_username = st.text_input("Create a Username", key="signup_username")
+        new_password = st.text_input("Create a Password", type="password", key="signup_password")
+        submit_button = st.form_submit_button("Sign Up")
     
-    if st.button("Sign Up"):
-        new_username = st.session_state['new_username']
-        new_password = st.session_state['new_password']
+    if submit_button:
         if new_username in user_credentials:
             st.error("Username already exists! Try another one.")
         elif new_username and new_password:
@@ -60,9 +56,7 @@ def signup():
             st.session_state['new_user'] = True
             st.success("Sign-up successful! Please log in.")
             st.session_state['current_page'] = "login"  # Redirect to login after sign-up
-            # Clear the session state for the sign-up form
-            st.session_state['new_username'] = ""
-            st.session_state['new_password'] = ""
+            st.experimental_rerun()  # Rerun to display login
         else:
             st.error("Please fill in all fields!")
 

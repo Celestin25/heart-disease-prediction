@@ -11,7 +11,7 @@ st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_ico
 # User credentials storage (hardcoded for demonstration)
 user_credentials = {
     "Celestin": {"password": "admin123"},
-    "Celestin": {"password": "user123"}
+    "user": {"password": "user123"}
 }
 
 # Initialize session state for authentication

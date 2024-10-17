@@ -34,7 +34,7 @@ def login():
     if submit_button:
         if username in user_credentials and user_credentials[username]['password'] == password:
             st.session_state['logged_in'] = True
-            st.session_state['current_page'] = "main"
+            st.session_state['current_page'] = "main"  # Explicitly set the current page to 'main'
             st.success(f"Welcome, {username}!")
             st.experimental_rerun()  # Rerun to display the main page
         else:
@@ -66,6 +66,15 @@ def logout():
     st.session_state['current_page'] = "login"
     st.experimental_rerun()  # Rerun to show the login page
 
+# Main page after login
+def main_page():
+    st.title("Welcome to the Mental Health Assistant!")
+    st.write("You are now logged in. Feel free to ask me anything related to mental health.")
+    
+    # Add logout button in the sidebar
+    if st.sidebar.button("Logout"):
+        logout()
+
 # Display login/signup page if not logged in
 if not st.session_state['logged_in']:
     if st.session_state['current_page'] == "login":
@@ -81,11 +90,9 @@ if not st.session_state['logged_in']:
     elif option == "Sign Up":
         st.session_state['current_page'] = "signup"
 
-# Proceed to main page if logged in
+# Display main page if logged in
 if st.session_state['logged_in']:
-    # Display a logout button
-    if st.sidebar.button("Logout"):
-        logout()
+    main_page()
 
     # Load necessary files and data
     working_dir = os.path.dirname(os.path.abspath(__file__))

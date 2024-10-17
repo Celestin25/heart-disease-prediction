@@ -1,9 +1,11 @@
 import os
 import json
-import random
-import difflib
+import re
 import streamlit as st
 from streamlit_option_menu import option_menu
+
+# Set the custom page title and icon
+st.set_page_config(page_title="Chatbot Assistant", page_icon="🤖")
 
 # Set page configuration at the very top
 st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")

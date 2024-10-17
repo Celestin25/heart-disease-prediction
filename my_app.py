@@ -4,6 +4,9 @@ import re
 import streamlit as st
 from streamlit_option_menu import option_menu
 
+# Set page configuration at the very top
+st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
+
 # User credentials storage (hardcoded for demonstration)
 user_credentials = {
     "admin": {"password": "admin123"},
@@ -113,8 +116,6 @@ if st.session_state['logged_in']:
         return "Sorry, I don't have an answer to that question. Please consult a professional." if language == 'en' else "Mbabarira, sinabashije kubona igisubizo cy'icyo kibazo. Mwihangane mubaze muganga."
 
     # Streamlit setup
-    st.set_page_config(page_title="Mental Health Assistant", layout="wide", page_icon="🧠")
-
     with st.sidebar:
         selected = option_menu('Mental Health Assistant', 
                                ['Mental Health (English)', 'Ubuzima bwo mumutwe (Kinyarwanda)'], 

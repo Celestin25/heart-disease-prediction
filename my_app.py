@@ -71,9 +71,7 @@ if not st.session_state['logged_in']:
 
 # Proceed to main page if logged in
 if st.session_state['logged_in']:
-    # Display a logout button at the bottom left of the sidebar
-    st.sidebar.markdown("<div style='position:fixed; bottom:0; width:100%; text-align:left;'><button style='font-size: 18px; cursor: pointer;' onclick='document.querySelector(\".stButton\").click()'>Logout</button></div>", unsafe_allow_html=True)
-    
+    # Display a logout button
     if st.sidebar.button("Logout"):
         logout()
 

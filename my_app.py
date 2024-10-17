@@ -74,7 +74,6 @@ def main_page():
     # Add logout button in the sidebar
     if st.sidebar.button("Logout"):
         logout()
-
 # Improved chatbot response based on dataset with difflib fuzzy matching
 def get_chatbot_response(user_query, language='en'):
     if language == 'en':
@@ -98,8 +97,12 @@ def get_chatbot_response(user_query, language='en'):
             if matched_pattern in [p.lower() for p in intent['patterns']]:
                 return random.choice(intent['responses'])
 
-    # Fallback response if no good match
-    return "Ndasaba imbabazi, sinshobora kubona igisubizo kuri ibyo. Nyamuneka wiyambaze umwuga w'ubuzima ku makuru menshi."  # Kinyarwanda fallback response
+    # Fallback response if no match is found
+    if language == 'en':
+        return "Sorry, I don't have an answer for that right now. Please consult a professional for more details."
+    else:
+        return "Ndasaba imbabazi, sinshobora kubona igisubizo kuri ibyo. Nyamuneka wiyambaze umwuga w'ubuzima ku makuru menshi."
+
 
 # Display login/signup page if not logged in
 if not st.session_state['logged_in']:

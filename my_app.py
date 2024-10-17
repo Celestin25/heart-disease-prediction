@@ -62,24 +62,18 @@ def logout():
 
 # Display login/signup page if not logged in
 if not st.session_state['logged_in']:
-    if st.session_state['current_page'] == "login":
-        login()
-    elif st.session_state['current_page'] == "signup":
-        signup()
-
-    # Sidebar to switch between login and sign-up
-    option = st.sidebar.radio("Choose an option", ["Login", "Sign Up"])
+    option = st.sidebar.selectbox("Choose an option", ["Login", "Sign Up"])
     
-    if option == "Login":
-        st.session_state['current_page'] = "login"
-    elif option == "Sign Up":
-        st.session_state['current_page'] = "signup"
-
-    st.experimental_rerun()
+    if option == "Login" and st.session_state['current_page'] == "login":
+        login()
+    elif option == "Sign Up" and st.session_state['current_page'] == "signup":
+        signup()
 
 # Proceed to main page if logged in
 if st.session_state['logged_in']:
-    # Display a logout button
+    # Display a logout button at the bottom left of the sidebar
+    st.sidebar.markdown("<div style='position:fixed; bottom:0; width:100%; text-align:left;'><button style='font-size: 18px; cursor: pointer;' onclick='document.querySelector(\".stButton\").click()'>Logout</button></div>", unsafe_allow_html=True)
+    
     if st.sidebar.button("Logout"):
         logout()
 

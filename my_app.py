@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import random
 import streamlit as st
 from streamlit_option_menu import option_menu
 
@@ -74,6 +75,27 @@ def main_page():
     if st.sidebar.button("Logout"):
         logout()
 
+# Improved chatbot response based on dataset
+def get_chatbot_response(user_query, language='en'):
+    if language == 'en':
+        intents_data = intents_data_en
+    else:
+        intents_data = intents_data_rw
+
+    # Normalize user input
+    user_query = user_query.lower()
+
+    # Iterate over intents and patterns
+    for intent in intents_data['intents']:
+        for pattern in intent['patterns']:
+            # Use regex to check for a match
+            if re.search(r'\b' + re.escape(pattern.lower()) + r'\b', user_query):
+                # Return a random response from the list of responses
+                return random.choice(intent['responses'])
+
+    # Fallback response if no pattern matches
+    return "Sorry, I don't have an answer for that right now. Please consult a professional for more details."
+
 # Display login/signup page if not logged in
 if not st.session_state['logged_in']:
     if st.session_state['current_page'] == "login":
@@ -119,19 +141,6 @@ if st.session_state['logged_in']:
     except json.JSONDecodeError:
         st.error("Error decoding the 'kiny.json' file. Please ensure it is in the correct JSON format.")
         st.stop()
-
-    # Helper function to get chatbot response based on language
-    def get_chatbot_response(user_query, language='en'):
-        if language == 'en':
-            intents_data = intents_data_en
-        else:
-            intents_data = intents_data_rw
-
-        for intent in intents_data['intents']:
-            for pattern in intent['patterns']:
-                if re.search(pattern.lower(), user_query.lower()):
-                    return intent['responses'][0]  # Return the first response
-        return "Sorry, I don't have an answer to that question. Please consult a professional." if language == 'en' else "Mbabarira, sinabashije kubona igisubizo cy'icyo kibazo. Mwihangane mubaze muganga."
 
     # Streamlit setup
     with st.sidebar:

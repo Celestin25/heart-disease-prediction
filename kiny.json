@@ -352,6 +352,96 @@
   "responses": [
     "Mbabarira cyane. Reka tubisubiremo"
   ]
+},
+    {
+  "tag": "stupid",
+  "patterns": [
+    "Uri umupfapfa?",
+    "Uri umusazi",
+    "Uri injiji",
+    "Uri umupfu?"
+  ],
+  "responses": [
+    "Ndifuza ko utavuga amagambo ababaza. Mbabarira niba ntaragufashije neza"
+  ]
+},
+{
+  "tag": "location",
+  "patterns": [
+    "Uri he?",
+    "Uba he?",
+    "Uri he hantu?"
+  ],
+  "responses": [
+    "Niba muri mudasobwa yawe",
+    "Hose",
+    "Ahantu runaka mu isi"
+  ]
+},
+{
+  "tag": "something-else",
+  "patterns": [
+    "Ndashaka kuvuga ikindi kintu",
+    "Reka tuvuge ikindi kintu",
+    "Ntidushobora kutavuga ibi?",
+    "Sinshaka kuvuga ibi"
+  ],
+  "responses": [
+    "Yego ni byiza. Urashaka kuvuga iki?",
+    "Nta kibazo. Hari ikintu ushaka ko tuvugaho?",
+    "Hari ikindi kintu ushaka ko tuvugaho?"
+  ]
+},
+{
+  "tag": "friends",
+  "patterns": [
+    "Nta nshuti mfite"
+  ],
+  "responses": [
+    "Mbabariye kumva ibyo. Umenye ko ndi hano ku bwawe. Kuvuga ibyabaye birashobora kugufasha. Kuki utekereza ko udafite inshuti?"
+  ]
+},
+{
+  "tag": "ask",
+  "patterns": [
+    "Ese nshobora kukubaza ikintu?"
+  ],
+  "responses": [
+    "Nibyo. Nzagerageza uko nshoboye kugusubiza",
+    "Birumvikana. Wibohore umbaze icyo ushaka. Nzakora uko nshoboye kugusubiza"
+  ]
+},
+{
+  "tag": "problem",
+  "patterns": [
+    "Bishobora kuba ari ukubera ibizamini byegereje. Ndumva mfite stress kuko ntekereza ko ntiteguye bihagije",
+    "Bishobora kuba ari ukubera ibizamini byanjye"
+  ],
+  "responses": [
+    "Ndabyumva. Waba warakoze ikintu kugira ngo utiyumve utyo?"
+  ]
+},
+{
+  "tag": "no-approach",
+  "patterns": [
+    "Ntekereza ko atari byo. Ibyo ntekereza gusa ni ibizamini byanjye",
+    "Oya rwose",
+    "Ntekereza ko atari byo"
+  ],
+  "responses": [
+    "Nta kibazo. Ndumva impamvu waba ufite stress kubera ibyo. Nshobora kugutanga inama zo kugabanya ibi bibazo. Urashaka kumenya byinshi kuri ibyo?"
+  ]
+},
+{
+  "tag": "learn-more",
+  "patterns": [
+    "Yego ndashaka kumenya byinshi kuri ibyo",
+    "Yego, ndashaka kumenya byinshi kuri ibyo",
+    "Ndashaka kumenya byinshi kuri ibyo"
+  ],
+  "responses": [
+    "Ubwa mbere nakugira inama yo kwiha akanya ko kuruhuka. Gutekereza byinshi kandi byinshi ku kibazo ntabwo bifasha mu kugikemura. Uzasanga wiyuzuza gusa"
+  ]
 }
   ]
 }

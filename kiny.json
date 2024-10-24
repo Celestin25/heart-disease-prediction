@@ -950,6 +950,106 @@
 "responses": [
 "Isano igaragara hagati y'ingano y'isukari mu maraso, kwanga insiluline n'imyitwarire yo kwiyahura bigaragaza ko ibibazo mu mikorere y'isukari bifitanye isano n'ibitekerezo byo kwiyahura n'kugerageza kwiyahura."
 ]
-}
+},
+    {
+      "tag": "ni igihe kingana iki impagarara zishobora kumara?",
+      "patterns": [
+          "ni igihe kingana iki impagarara zishobora kumara?"
+      ],
+      "responses": [
+          "ibibazo by'impagarara bisanzwe biba ku gipimo cyo hejuru mu minota 10, kandi ntibikunda kurenza iminota 30. Ariko muri icyo gihe gito, ushobora kugira ubwoba bukomeye ku buryo wumva nk'aho uri hafi gupfa cyangwa kugera ku murongo wo kubura contrôle."
+      ]
+  },
+  {
+      "tag": "ni izihe nzego z'impagarara?",
+      "patterns": [
+          "ni izihe nzego z'impagarara?"
+      ],
+      "responses": [
+          "ibipimo by'impagarara bisanzwe bigabanyijemo ibyiciro bine bitewe n'ubukana bw'ubwoba n'ibibazo by'ubuzima, aribyo: impagarara nto, impagarara z'ubukana, impagarara zikomeye n'impagarara z'ubwoba."
+      ]
+  },
+  {
+      "tag": "ni mu myaka ingahe impagarara ziba ku gipimo cyo hejuru?",
+      "patterns": [
+          "ni mu myaka ingahe impagarara ziba ku gipimo cyo hejuru?"
+      ],
+      "responses": [
+          "abakuze b'imyaka 30 kugeza 44 ni bo bafite igipimo cyo hejuru cy'impagarara muri iki cyiciro, aho hafi 23% by'abantu bafite iyo myaka bavuga ko bafite ikibazo cy'impagarara mu mwaka ushize."
+      ]
+  },
+  {
+      "tag": "kuki impagarara zibi ku buzima bwawe?",
+      "patterns": [
+          "kuki impagarara zibi ku buzima bwawe?"
+      ],
+      "responses": [
+          "ibibazo by'impagarara bishobora gutera umuvuduko w'umutima, guhinda umutima, no kubabara mu gituza. Ushobora kandi kuba ufite ibyago byinshi byo kugira umuvuduko w'amaraso uri hejuru no kugira indwara z'umutima. Niba ufite indwara z'umutima, ibibazo by'impagarara bishobora kongera ibyago byo kugira ibibazo by'umutima."
+      ]
+  },
+  {
+      "tag": "ni irihe tegeko 3 3 3 ku mpagarara?",
+      "patterns": [
+          "ni irihe tegeko 3 3 3 ku mpagarara?"
+      ],
+      "responses": [
+          "hari uburyo bwo kugabanya impagarara bita grounding. Hariho uburyo butandukanye, ariko uburyo bworoshye bwo kwibuka ni itegeko rya 3-3-3. Witondere ibintu bitatu ubona, amajwi atatu wumva, hanyuma move ibice bitatu by'umubiri wawe. Iki gikorwa gishobora gufasha ibitekerezo byawe kongera kwibanda ku bindi."
+      ]
+  },
+  {
+      "tag": "ese dushobora kugenzura ibitekerezo byacu?",
+      "patterns": [
+          "ese dushobora kugenzura ibitekerezo byacu?"
+      ],
+      "responses": [
+          "tumenya igice gito cy'ibitekerezo bigenda mu bwonko bwacu, kandi dushobora kugenzura gusa igice gito cy'ibitekerezo byacu biboneka. Igice kinini cy'ibitekerezo byacu gikorwa mu buryo butazwi. ... ibitotsi n'ibikorwa bitunguranye bitanga ishusho y'ubuzima bwacu bwo mu mutwe budafite imipaka."
+      ]
+  },
+  {
+      "tag": "tugira ibitekerezo bingana iki ku munsi?",
+      "patterns": [
+          "tugira ibitekerezo bingana iki ku munsi?"
+      ],
+      "responses": [
+          "ubushakashatsi bushya bwerekanye ko umuntu usanzwe agira ibitekerezo 6,200 ku munsi. Ibihumbi by'ibitekerezo bigenda mu bwonko bwacu mu gihe cy'umunsi. Abantu benshi banakemanga ko batabasha gusinzira mu gihe bashyize mu buriri kuko ubwenge bwabo butahagarika gutekereza."
+      ]
+  },
+  {
+      "tag": "tugabanye impagarara gute?",
+      "patterns": [
+          "tugabanye impagarara gute?"
+      ],
+      "responses": [
+          "itegeko rya 3 3 3 ni uburyo bwiza bwo kugabanya impagarara. Muri ubu buryo ugomba kwibuka ibintu bitatu ubona, amajwi atatu wumva, hanyuma ugakora ibice bitatu by'umubiri wawe. Iki gikorwa gishobora gufasha ibitekerezo byawe kongera kwibanda ku bindi."
+      ]
+  },
+  {
+      "tag": "nkeneye kumara ku busa!",
+      "patterns": [
+          "nkeneye kumara ku busa!"
+      ],
+      "responses": [
+          "ntukigire ku busa niba urebye neza uzabona abantu bagufasha kandi bashaka ko ugenda nabo. Uretse iyo utekereza ko uri ku busa, ndakugira inama yo kureba filime y'ubwoba, urabihagarika kandi ntuzongera kumva uri ku busa. ;)"
+      ]
+  },
+  {
+      "tag": "ntawe unshaka!",
+      "patterns": [
+          "ntawe unshaka!"
+      ],
+      "responses": [
+          "ese koko utekereza ko bimeze gutyo? nakugira inama yo gufasha umuntu ukeneye ubufasha bwawe, uzahita ubona umuntu ugukunda gusa kubera ko uri mwiza. Ubuntu ni impano nziza ushobora guha umuntu wese :)"
+      ]
+  },
+  {
+      "tag": "ntekereza ko ndi mubi!",
+      "patterns": [
+          "ntekereza ko ndi mubi!"
+      ],
+      "responses": [
+          "ese koko utekereza gutyo? wifuza kubona isura nziza cyane? fungura kamera yawe, maze usanga isura nziza cyane kuri uyu mubumbe ihita igaragara."
+      ]
+  }
+
   ]
 }

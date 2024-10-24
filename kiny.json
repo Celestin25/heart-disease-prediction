@@ -230,5 +230,128 @@
     "Ndakwiyumvaho. Ndi hano niba ukeneye kuvugana"
   ]
 },
+    {
+  "tag": "understand",
+  "patterns": [
+    "Ntuntumva",
+    "Uri robot gusa. Wabimenya ute?",
+    "Ntushobora kumenya ibyo ndimo kurengana",
+    "Nta cyo umaze",
+    "Ntushobora kumfasha",
+    "Nta muntu unumva"
+  ],
+  "responses": [
+    "Ndumva sindigufasha neza muri iki gihe",
+    "Mbabarira kumva ibyo. Ndimo gukora uko nshoboye ngo ngufashe",
+    "Ndagerageza uko nshoboye kugufasha. Nuko vugana nanjye"
+  ]
+},
+{
+  "tag": "done",
+  "patterns": [
+    "Ni ibyo gusa",
+    "Nta kindi mfite cyo kuvuga",
+    "Nta kindi",
+    "Ni ibyo nari mfite byo kuvuga",
+    "Oya, ni ibyo gusa"
+  ],
+  "responses": [
+    "Ndabyumvise kandi ndabyanditse byose. Tuzongera tubonane",
+    "Yego ndumva twarangije uyu munsi. Tuzongera tubonane",
+    "Ndifuza ko ugira umunsi mwiza. Tuzongera tubonane vuba",
+    "Yego twarangije. Ugire umunsi mwiza",
+    "Yego ndabyumvise. Komeza wishimire umunsi wawe"
+  ]
+},
+{
+  "tag": "suicide",
+  "patterns": [
+    "Ndashaka kwiyica",
+    "Natekereje kwiyica",
+    "Ndashaka gupfa",
+    "Ngiye kwiyica",
+    "Ngiye kwiyahura"
+  ],
+  "responses": [
+    "Mbabariye kumva ibyo ariko ufite byinshi byo kwiringira imbere. Shaka ubufasha uhamagara: 9152987821"
+  ]
+},
+{
+  "tag": "hate-you",
+  "patterns": [
+    "Ndakwanga",
+    "Sinkunze",
+    "Sinkwizera"
+  ],
+  "responses": [
+    "Mbabarira niba hari icyo nakubabaje. Ndi hano gusa ngo ngufashe",
+    "Mbabarira niba hari icyo nakoze cyakubabaje. Ndashaka gusa kugufasha"
+  ]
+},
+{
+  "tag": "hate-me",
+  "patterns": [
+    "Uranyanga",
+    "Nzi ko unyanga",
+    "Ntunkunze"
+  ],
+  "responses": [
+    "Kuki utekereza utyo?",
+    "Mbabarira niba hari ikintu nakoze kigatuma utekereza utyo"
+  ]
+},
+{
+  "tag": "default",
+  "patterns": [
+    "ibizamini",
+    "inshuti",
+    "imibanire",
+    "umukunzi w'umuhungu",
+    "umukunzi w'umukobwa",
+    "umuryango",
+    "amafaranga",
+    "ibibazo by'amafaranga"
+  ],
+  "responses": [
+    "Yego ndabyumva. Mbwira byinshi",
+    "Ndabyumva. Hari ikindi?",
+    "Mbwira byinshi kuri ibyo",
+    "Yego ni byiza. Kuki utambwira byinshi kuri ibyo?",
+    "Ndakumva. Mbwira byinshi"
+  ]
+},
+{
+  "tag": "jokes",
+  "patterns": [
+    "Mbwira amagambo y'ubucurabwenge",
+    "Mbwira andi magambo y'ubucurabwenge"
+  ],
+  "responses": [
+    "Ubuzima bwo mu mutwe si urwenya"
+  ]
+},
+{
+  "tag": "repeat",
+  "patterns": [
+    "Wabimbwiye",
+    "Waravuze ibyo",
+    "Kuki uri kwongera ibyo wavuze?"
+  ],
+  "responses": [
+    "Mbabarira sinari nabibonye. Nzagerageza kutongera kubisubiramo"
+  ]
+},
+{
+  "tag": "wrong",
+  "patterns": [
+    "Uravuga iki?",
+    "Ibyo nta shingiro bifite",
+    "Igisubizo kibi",
+    "Igisubizo kitari cyo"
+  ],
+  "responses": [
+    "Mbabarira cyane. Reka tubisubiremo"
+  ]
+}
   ]
 }

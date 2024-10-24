@@ -442,6 +442,145 @@
   "responses": [
     "Ubwa mbere nakugira inama yo kwiha akanya ko kuruhuka. Gutekereza byinshi kandi byinshi ku kibazo ntabwo bifasha mu kugikemura. Uzasanga wiyuzuza gusa"
   ]
+},
+    {
+    "tag": "user-agree",
+    "patterns": [
+        "Yego ufite ukuri. Nkeneye igihe cyo kuruhuka.",
+        "Yego ufite ukuri kuri ibyo"
+    ],
+    "responses": [
+        "Nyuma, nagira inama yo gukora umwitozo wo guhumeka. Guhumeka bitera umutima kurangwa n'amahoro n'ibitekerezo bihamye."
+    ]
+},
+{
+    "tag": "meditation",
+    "patterns": [
+        "Hmm ibyo bisa nkaho byamfasha.",
+        "Ibyo birasa nk'ibifite akamaro."
+    ],
+    "responses": [
+        "Shyira ibitekerezo byawe byose ku guhumeka kwawe. Witonde wumve kandi wumve uko uhumeka kandi usohoka mu mazuru yawe. Humeka byimbitse kandi buhoro. Igihe ibitekerezo byawe bihinduka, garuka witonze ku guhumeka kwawe."
+    ]
+},
+{
+    "tag": "user-meditation",
+    "patterns": [
+        "Nakoze ibyo uvuze kandi numva meze neza cyane. Urakoze cyane.",
+        "Numva meze neza ubu"
+    ],
+    "responses": [
+        "Urakaza neza. Ibuka: Ujye wibanda ku byo ushobora gukora. Iyo ubonye wihangayika, fata umunota wo kureba ibintu ushobora gukora. Ntushobora kubuza umuyaga kuza ariko ushobora kwitegura. Ntushobora kugenzura uko undi muntu yitwara, ariko ushobora kugenzura uko ubyitwaramo. Menya ko rimwe na rimwe, ibyo ushobora gukora ari imbaraga zawe n'imyifatire yawe. Iyo ushyize imbaraga zawe mu bintu ushobora gukora, uzaba ukora neza cyane."
+    ]
+},
+{
+    "tag": "jamila-useful",
+    "patterns": [
+        "urakoze cyane nanone. Nzakomeza gukora imyitozo yo guhumeka kandi nkibanda ku byo nshobora gukora."
+    ],
+    "responses": [
+        "Ndishimye ko ibi byagufashije. Hari ikindi nakwifashishamo?"
+    ]
+},
+{
+    "tag": "user-advice",
+    "patterns": [
+        "Ndashaka inama.",
+        "Nkeneye inama.",
+        "Nkeneye inama ku kintu"
+    ],
+    "responses": [
+        "Nibyo. Ni iki nakugiramo inama?",
+        "Niko niki ukeneye inama?"
+    ]
+},
+{
+    "tag": "learn-mental-health",
+    "patterns": [
+        "Ndashaka kwiga ibijyanye n'ubuzima bwo mu mutwe.",
+        "Ndashaka kumenya byinshi ku buzima bwo mu mutwe.",
+        "Mfite ishyaka ryo kwiga ku buzima bwo mu mutwe."
+    ],
+    "responses": [
+        "Yoo ibyo ni byiza cyane. Nzishimira gusubiza ibyo nzi byose kuri ibyo."
+    ]
+},
+{
+    "tag": "mental-health-fact",
+    "patterns": [
+        "Mbwira ikintu kimwe ku buzima bwo mu mutwe",
+        "Mbwira ikindi kintu ku buzima bwo mu mutwe"
+    ],
+    "responses": [
+        "Dukurikije raporo ya UNICEF, umwe mu Banyahindi 7 bafite hagati y'imyaka 15-24 yumva afite agahinda",
+        "1 mu bantu 5 bakiri bato (imyaka 13-18) bafite cyangwa bazagira indwara yo mu mutwe mu buzima bwabo.",
+        "Agahinda gakabije ni kimwe mu mpamvu z'ubumuga ziri ku isonga ku isi."
+    ]
+},
+{
+    "tag": "fact-1",
+    "patterns": [
+        "Ubuzima bwo mu mutwe ni iki?",
+        "Sobanura Ubuzima bwo mu mutwe"
+    ],
+    "responses": [
+        "Ubuzima bwo mu mutwe ni imibereho myiza umuntu aba afite aho amenya ubushobozi bwe, ashobora guhangana n'imihangayiko isanzwe y'ubuzima, akora neza kandi ku buryo bwiza, kandi ashobora gutanga umusanzu mu muryango we",
+        "Ubuzima bwo mu mutwe burimo ibyiyumvo byacu, ibitekerezo, n'imibereho myiza. Bigira ingaruka ku buryo dutekereza, twiyumva, n'ibyo dukora. Binafasha kugena uko ducunga stress, duhuza n'abandi, kandi dufata ibyemezo."
+    ]
+},
+{
+    "tag": "fact-2",
+    "patterns": [
+        "Kuki ubuzima bwo mu mutwe ari ingenzi?",
+        "Ni ukubera iki ubuzima bwo mu mutwe ari ingenzi?"
+    ],
+    "responses": [
+        "Kugira ubuzima bwo mu mutwe ni ingenzi mu guhamya imyitwarire myiza, ibyiyumvo, n'ibitekerezo. Kwita ku buzima bwo mu mutwe bishobora kongera umusaruro, guteza imbere ishusho yacu, no kunoza imibanire."
+    ]
+},
+{
+    "tag": "fact-3",
+    "patterns": [
+        "Agahinda ni iki?",
+        "Sobanura Agahinda"
+    ],
+    "responses": [
+        "Ikibazo cy'ubuzima bwo mu mutwe kirangwa n'agahinda gahoraho cyangwa kutishimira ibikorwa, bigatera ibibazo bikomeye mu buzima bwa buri munsi."
+    ]
+},
+{
+    "tag": "fact-5",
+    "patterns": [
+        "Namenya nte ko mfite agahinda?",
+        "Mfite agahinda?",
+        "Ndwaye agahinda?",
+        "Mfite ikibazo cyo mu mutwe?"
+    ],
+    "responses": [
+        "Kugira ngo umuntu amenye ko afite agahinda, agomba kuba yarabaye mu mibereho mibi cyangwa yaratakaje ishyaka mu buzima byibuze ibyumweru 2. Kandi, azaba yahuye n'ibimenyetso bikurikira: kwiyumva umunezero, kwiheba, cyangwa kurakara hafi buri munsi."
+    ]
+},
+{
+    "tag": "fact-6",
+    "patterns": [
+        "Umujyanama ni nde?",
+        "Umujyanama akora iki?"
+    ],
+    "responses": [
+        "Umujyanama ni izina ryihariye ryerekeza ku bakozi b'umwuga bafite ubumenyi bwo gutanga ubuvuzi no gufasha abantu. Iri zina akenshi rikoreshwa ku bahanga mu by'ubuzima bwo mu mutwe, ariko rishobora no kuba abantu batanga serivisi zinyuranye, harimo abakozi bashinzwe imibereho myiza, abajyanama, abatoza ubuzima, n'abandi benshi."
+    ]
+},
+{
+    "tag": "fact-7",
+    "patterns": [
+        "Ubujyanama ni iki?",
+        "Nkeneye ubujyanama?",
+        "Ubujyanama bugenewe nde?"
+    ],
+    "responses": [
+        "Ubujyanama ni uburyo bwo kuvura bugamije gufasha gukemura ibibazo by'ubwenge cyangwa ibyiyumvo.",
+        "Ubujyanama ni uburyo bwo kuvura bugamije gufasha gukemura ibibazo by'ubwenge cyangwa ibyiyumvo. Bufasha abantu bafite ibibazo by'ubuzima bwo mu mutwe cyangwa n'ibibazo bya buri munsi mu buzima."
+    ]
 }
   ]
 }

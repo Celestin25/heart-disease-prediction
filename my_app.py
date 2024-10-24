@@ -88,7 +88,7 @@ def get_chatbot_response(user_query, language='en'):
     all_patterns = [pattern.lower() for intent in intents_data['intents'] for pattern in intent['patterns']]
 
     # Use difflib to find the closest match
-    close_matches = difflib.get_close_matches(user_query, all_patterns, n=1, cutoff=0.7)  # Adjust cutoff for matching
+    close_matches = difflib.get_close_matches(user_query, all_patterns, n=1, cutoff=0.5)  
 
     if close_matches:
         matched_pattern = close_matches[0]

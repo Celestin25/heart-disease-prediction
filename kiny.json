@@ -725,6 +725,42 @@
     "responses": [
         "Hari ubwoko bwinshi bw'impuguke mu by'ubuzima bwo mu mutwe. Kubona ukwiye wowe bishobora gusaba ubushakashatsi."
     ]
+},
+    {"tag": "fact-24",
+"patterns": ["Ni he nakwiyambaza umufasha?"],
+"responses": ["Abantu benshi basanga inkunga y'bagenzi babo ari igikoresho gifasha mu kwiyubaka. Hari amashyirahamwe atandukanye atanga amatsinda y'bufasha ku bantu barwaye, imiryango yabo n'inshuti zabo. Amwe muri ayo matsinda ayoborwa n'abarwayi bagenzi babo, naho ayandi ashobora kuyoborwa n'impuguke mu by'ubuzima bwo mu mutwe."]
+},
+{"tag": "fact-25",
+"patterns": ["Ushobora gukumira ibibazo by'ubuzima bwo mu mutwe?"],
+"responses": ["Twese turashobora kugira ibibazo by'ubuzima bwo mu mutwe, ariko kongera imibereho myiza yacu, kwihangana no gushaka ubufasha hakiri kare birashobora gufasha mu gukumira ibibazo bitagombye kuba bikomeye."]
+},
+{"tag": "fact-26",
+"patterns": ["Hari umuti ukiza indwara zo mu mutwe?", "Hari umuti w'indwara zo mu mutwe?"],
+"responses": ["Birafasha kandi birushijeho kuba byiza kumenya ibigufasha mu bibazo uhura nabyo. Kuganira, kujya mu nama, imiti, ubucuti, imyitozo ngororamubiri, kuryama neza no kurya neza, n'akazi k'agaciro byose birashobora gufasha."]
+},
+{"tag": "fact-27",
+"patterns": ["Ni iki kitera ibibazo by'ubuzima bwo mu mutwe?"],
+"responses": ["Ibibazo cyangwa ingorane z'ubuzima bwo mu mutwe bishobora guterwa n'ibibazo byo mu mutwe, ibyo mu mubiri, n'imibanire n'abandi, ndetse n'ibintu biba mu buzima."]
+},
+{"tag": "fact-28",
+"patterns": ["Nakora iki iyo mpewe n'ubuzima bwanjye bwo mu mutwe?"],
+"responses": ["Ikintu cy'ingenzi ni ukuvugana n'umuntu wizeye. Uyu ashobora kuba ari inshuti, mukorana, umwe mu muryango, cyangwa muganga. Usibye kuvugana n'umuntu, birashobora kuba byiza kumenya amakuru arushijeho ku byo urimo unyuramo. Ibi bintu birashobora gufasha mu gusobanukirwa neza ibyo urimo unyuramo, kandi bikaba intangiriro yo kubona ubufasha."]
+},
+{"tag": "fact-29",
+"patterns": ["Namenya nte ko ndwaye?"],
+"responses": ["Niba ibyo wizera, ibitekerezo, uko wiyumva cyangwa imyitwarire byawe bigira ingaruka zikomeye ku bushobozi bwawe bwo gukora mu buryo busanzwe, byaba ari ngombwa gushaka ubufasha."]
+},
+{"tag": "fact-30",
+"patterns": ["Nabungabunga nte imibanire n'abandi? Bite se iyo numva ndi jenyine?"],
+"responses": ["Abantu benshi bari bonyine muri iki gihe, ariko ntidukwiye kumva turi twenyine. Turi kumwe muri ibi. Tekereza ku buryo butandukanye bwo gukomeza guhuza bishimishije kurusha ibindi. Urugero, ushobora guhitamo kuvugana ukoresheje amashusho aho guhamagara kuri telefone, cyangwa ushobora guhitamo kohereza ubutumwa mu munsi wose aho kugira igihe kimwe cya videwo. Hanyuma, ukore gahunda n'abo mubana. Ushobora kuvugana n'inshuti zawe z'inkoramutima kuri videwo nimugoroba maze uhamagare umwe wo mu muryango rimwe mu cyumweru. Wibuke kandi kwita ku bantu bashobora kutabona interineti. Bahamagare kuri telefone ubabaze uko wabafasha. Uburyo uhuza n'abandi ni ngombwa. Gusura urubuga rw'imbuga nkoranyambaga udafite intego no gushima ibitekerezo bike akenshi ntibizana imibanire ikomeye. Menya neza ko wibanda ku ngamba zituma wumva uri kumwe kandi ufite aho uhuriye n'abandi. Niba ingamba zawe za none zidafasha kumva uri kumwe n'abandi, shaka uko wakemura ikibazo. Buri wese yumva ari wenyine rimwe na rimwe. Waba uherutse kwimukira mu mujyi mushya, uri guhindura inshuti zawe, wabuze umuntu w'ingenzi mu buzima bwawe, cyangwa wabuze akazi ndetse ukatakaza n'imibanire ikomeye n'abo mukorana. Abandi bantu bashobora kugirana imibanire y'umubiri n'abandi ariko bakumva ibyifuzo byabo by'imibanire n'abandi bituzuye. Ingamba nko kwirinda guhura n'abandi cyangwa kwikumira bishobora gutuma kumva uri wenyine birushaho kuba bibi uko bimeze kose. Hamagara abo mufitanye imibanire. Tanga ibitekerezo byo gukomeza guhuza kandi urebe niba mwashyiraho igihe gisanzwe cyo guhura. Abantu bashobora kudashaka guhamagara kubera impamvu nyinshi zitandukanye, bityo ntutinye kuba uwa mbere ubaza. Shaka amatsinda y'inkunga rusange n'amatsinda y'ubufasha bwa rusange ku mbuga nkoranyambaga. Iyi ndwara irimo guhuza buri wese, bityo shaka amahirwe yo gushyiraho imibanire mishya. Aya matsinda ni uburyo bwiza bwo gusangira ubumenyi n'ubushobozi bwawe cyangwa gushaka ubufasha n'inkunga. Shaka amatsinda yihariye y'ubufasha. Amatsinda y'ubufasha arimo kwimurirwa kuri interineti, kandi hari imirongo myinshi itandukanye y'ubufasha wahamagara niba ukeneye kuvugana n'umuntu."]
+},
+{"tag": "fact-31",
+"patterns": ["Ni iyihe tandukaniro hagati y'ubwoba n'umuhangayiko?"],
+"responses": ["Umuhangayiko n'ubwoba akenshi bikoreshwa kimwe, kandi hari aho bihurira. Umuhangayiko ukomoka ku ndwara imwe ya 'kurwana, guhunga, cyangwa guhagarara' nk'ubwoba, kandi ibimenyetso by'umubiri by'ubwoba n'umuhangayiko birashobora kuba bisa cyane. Icyakora, impamvu z'umuhangayiko n'ubwoba akenshi zitandukanye. Umuhangayiko wibanda cyane ku mbaraga zo hanze ziturimo zitubera inzitizi mu guhangana nazo. Iyo dufite umuhangayiko, akenshi tuba tuzi icyo duhangayikiye, kandi ibimenyetso by'umuhangayiko akenshi birangira nyuma y'uko igihe cy'umuhangayiko kirangiye. Ku rundi ruhande, ubwoba akenshi ntibworoshye gusobanura. Ubwoba bwibanda ku bibazo cyangwa ubwoba ku bintu bishobora kutugirira nabi, ndetse n'ubwoba bw'ubwoba ubwabwo. Umuhangayiko n'ubwoba ni kimwe mu bigize umuntu, ariko byombi birashobora kuba ibibazo niba bimara igihe kirekire cyangwa bigira ingaruka ku mibereho cyangwa ubuzima bwa buri munsi."]
+},
+{"tag": "fact-32",
+"patterns": ["Ni iyihe tandukaniro hagati y'agahinda n'umunezero muke?", "Itandukaniro hagati y'agahinda n'umunezero muke"],
+"responses": ["Agahinda ni igisubizo gisanzwe ku gihombo, agahinda, ibibazo, cyangwa ibindi bibazo bigoye. Kumva agahinda rimwe na rimwe ni ikindi gice cyo kuba umuntu. Muri ibi bihe, uko kumva agahinda biragenda vuba kandi ushobora gukomeza ubuzima bwawe bwa buri munsi. Ubundi buryo bwo kuvuga agahinda bishobora kuba ari kumva uri hasi, kumva udashishikaye, cyangwa kumva utishimye. Umuntu ashobora kuvuga ko yumva adashishikaye, ariko niba biragenda ubwabyo kandi ntibitume ubuzima bugira ikibazo gikomeye, birashoboka ko atari indwara yo kudashishikara. Kudashishikara ni indwara yo mu mutwe igira ingaruka ku buryo wiyumva, uburyo wiyumva, n'uburyo wumva kandi uhuriye n'ibintu biguzenguza. Irashobora kandi kwitwa amazina atandukanye, nk'indwara yo kudashishikara, indwara ikomeye yo kudashishikara, cyangwa kudashishikara gukabije. Kudashishikara bishobora kubaho nta mpamvu, kandi bigamara igihe kirekire. Ni ikintu kirenze agahinda cyangwa kutishima. Abantu bagira kudashishikara bashobora kumva nta cyo bamaze cyangwa nta cyizere bafite. Bashobora kumva bafite urubanza rudakwiye. Bamwe bashobora kugaragaza kudashishikara nk'uburakari cyangwa umujinya. Birashobora kuba bigoye kwibanda cyangwa gufata ibyemezo. Abantu benshi batakaza inyungu mu bintu bahoze bishimira kandi bashobora kwikumira ku bandi. Hariho kandi ibimenyetso by'umubiri byo kudashishikara, nko kuryama nabi, kubura ibiryo n'ingufu no kubabara bidashoboka gusobanura. Bamwe bashobora kugira ibitekerezo bigoye ku rupfu cyangwa kwiyahura. Kudashishikara kumara igihe kirenze ibyumweru bibiri, akenshi ntibigende ubwabyo, kandi bigira ingaruka ku buzima. Ni indwara nyayo, kandi ishobora kuvurwa cyane. Ni ngombwa gushaka ubufasha niba ufite impungenge ku kudashishikara."]
 }
   ]
 }

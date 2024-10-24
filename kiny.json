@@ -761,6 +761,105 @@
 {"tag": "fact-32",
 "patterns": ["Ni iyihe tandukaniro hagati y'agahinda n'umunezero muke?", "Itandukaniro hagati y'agahinda n'umunezero muke"],
 "responses": ["Agahinda ni igisubizo gisanzwe ku gihombo, agahinda, ibibazo, cyangwa ibindi bibazo bigoye. Kumva agahinda rimwe na rimwe ni ikindi gice cyo kuba umuntu. Muri ibi bihe, uko kumva agahinda biragenda vuba kandi ushobora gukomeza ubuzima bwawe bwa buri munsi. Ubundi buryo bwo kuvuga agahinda bishobora kuba ari kumva uri hasi, kumva udashishikaye, cyangwa kumva utishimye. Umuntu ashobora kuvuga ko yumva adashishikaye, ariko niba biragenda ubwabyo kandi ntibitume ubuzima bugira ikibazo gikomeye, birashoboka ko atari indwara yo kudashishikara. Kudashishikara ni indwara yo mu mutwe igira ingaruka ku buryo wiyumva, uburyo wiyumva, n'uburyo wumva kandi uhuriye n'ibintu biguzenguza. Irashobora kandi kwitwa amazina atandukanye, nk'indwara yo kudashishikara, indwara ikomeye yo kudashishikara, cyangwa kudashishikara gukabije. Kudashishikara bishobora kubaho nta mpamvu, kandi bigamara igihe kirekire. Ni ikintu kirenze agahinda cyangwa kutishima. Abantu bagira kudashishikara bashobora kumva nta cyo bamaze cyangwa nta cyizere bafite. Bashobora kumva bafite urubanza rudakwiye. Bamwe bashobora kugaragaza kudashishikara nk'uburakari cyangwa umujinya. Birashobora kuba bigoye kwibanda cyangwa gufata ibyemezo. Abantu benshi batakaza inyungu mu bintu bahoze bishimira kandi bashobora kwikumira ku bandi. Hariho kandi ibimenyetso by'umubiri byo kudashishikara, nko kuryama nabi, kubura ibiryo n'ingufu no kubabara bidashoboka gusobanura. Bamwe bashobora kugira ibitekerezo bigoye ku rupfu cyangwa kwiyahura. Kudashishikara kumara igihe kirenze ibyumweru bibiri, akenshi ntibigende ubwabyo, kandi bigira ingaruka ku buzima. Ni indwara nyayo, kandi ishobora kuvurwa cyane. Ni ngombwa gushaka ubufasha niba ufite impungenge ku kudashishikara."]
+},
+    {
+"tag": "Numva naratuye ababyeyi banjye",
+"patterns": [
+"numva naratuye ababyeyi banjye"
+],
+"responses": [
+"Uko byagenda kose, ababyeyi bawe bazahora bakwiratira kandi bagukunda. Uzumva umeze neza cyane nuramuka usangiye uko wiyumva nabo."
+]
+},
+{
+"tag": "Ni izihe ngeri z'umunezero muke?",
+"patterns": [
+"ni izihe ngeri z'umunezero muke?"
+],
+"responses": [
+"Hari uburyo butandukanye bwo kubura umunezero ariko ubusanzwe ni: umunezero muke wa kliniki, ikibazo gihoraho cyo kubura umunezero, indwara y'imyifatire ihindagurika, ikibazo nyuma yo kubyara."
+]
+},
+{
+"tag": "Nta cyo namaze",
+"patterns": [
+"nta cyo namaze"
+],
+"responses": [
+"Ntukeke ko udashobora kugera ku byo ushaka. Ufite ubushobozi bwo kugera ku ntego zawe. Dore ijambo rigira riti 'ibyo ushobora kwibwira byose birashoboka'."
+]
+},
+{
+"tag": "Muri iyi minsi ndimo umuhangayiko",
+"patterns": [
+"muri iyi minsi ndimo umuhangayiko"
+],
+"responses": [
+"Ubushakashatsi bwanjye buvuga ko umuziki ari uburyo bwiza bwo kugabanya umuhangayiko. Shiramo umuzika ukunda, bizagufasha kunezezwa."
+]
+},
+{
+"tag": "Ndashaka kwiyahura",
+"patterns": [
+"ndashaka kwiyahura"
+],
+"responses": [
+"Hari umurongo w'ubufasha, ushobora kuvugana n'umujyanama uyu munsi: Ushobora guhamagara Befrienders Kenya kuri +254 722 178 177. Ujye wibuka ko hari uwo uricyo."
+]
+},
+{
+"tag": "Ndatinya gusubira gutsindwa",
+"patterns": [
+"ndatinya gusubira gutsindwa"
+],
+"responses": [
+"Gutsindwa ni urwego rugana mu kuneshwa. Ntutinye gutsindwa. Gukora cyane n'ukwiyemeza bizagufasha kugera ku ntego yawe."
+]
+},
+{
+"tag": "Umunezero muke ni iki?",
+"patterns": [
+"umunezero muke ni iki?"
+],
+"responses": [
+"Umunezero muke ni indwara itera kumva udanezerewe buri gihe no kutagira icyo wishimira. Yitwa kandi indwara y'umunezero muke ikomeye cyangwa ya kliniki, igira ingaruka ku buryo wiyumva, utekereza kandi witwara bishobora no gutuma habaho ibibazo by'amarangamutima n'umubiri."
+]
+},
+{
+"tag": "Ni izihe mpamvu zitera umunezero muke?",
+"patterns": [
+"ni izihe mpamvu zitera umunezero muke?"
+],
+"responses": [
+"Biragoye, kandi hari impamvu nyinshi zitera umunezero muke ukabije. Ibintu nk'uko wabyawe, ibibazo bikomeye by'ubuzima, ibintu ufata (imiti imwe n'imwe, ibiyobyabwenge n'inzoga) n'indwara bishobora kugira ingaruka ku buryo ubwonko bwawe bugenzura uko wiyumva."
+]
+},
+{
+"tag": "Ni izihe mpamvu z'ingenzi zitera umunezero muke?",
+"patterns": [
+"ni izihe mpamvu z'ingenzi zitera umunezero muke?"
+],
+"responses": [
+"Ihohoterwa. Ihohoterwa ryabaye mu gihe cyashize, nko gukomeretsa umubiri, ihohoterwa rishingiye ku gitsina, cyangwa amarangamutima bishobora kongera amahirwe yo kugira umunezero muke wa kliniki nyuma mu buzima."
+]
+},
+{
+"tag": "Ni ikihe kigero cy'imyaka kirushijeho kugira umunezero muke?",
+"patterns": [
+"ni ikihe kigero cy'imyaka kirushijeho kugira umunezero muke?"
+],
+"responses": [
+"Uyu mubare wahwanyije na 7.1% by'abantu bakuru bose muri Leta Zunze Ubumwe z'Amerika. Ikigero cy'umunezero muke ukabije cyari hejuru mu bagore bakuru (8.7%) ugereranyije n'abagabo (5.3%). Ikigero cy'abantu bakuru bafite umunezero muke ukabije cyari hejuru mu bantu bafite imyaka 18-25 (13.1%)."
+]
+},
+{
+"tag": "Ni iyihe gihugu kirushijeho kugira umunezero muke?",
+"patterns": [
+"ni iyihe gihugu kirushijeho kugira umunezero muke?"
+],
+"responses": [
+"Igihugu gifite umunezero muke cyane ni Afuganistani, aho umuntu umwe mu bantu batanu arengeje abagira iyi ndwara. Igihugu gifite umunezero muke muke cyane ni Ubuyapani, gifite ikigero cy'abarwaye kingana na 2.5%."
+]
 }
   ]
 }

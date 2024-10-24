@@ -95,6 +95,64 @@
         "Ndi Pandora. Ndi umukozi wa AI wakozwe ngo nkore nk’ umuganga w'ubuvuzi bw'umubiri. Umeze ute uyu munsi?", 
         "Mushobora kunita Pandora.", "Ndi Pandora!", "Mwitirize Pandora"
       ]
-    }
+    },
+    {
+  "tag": "depression",
+  "patterns": [
+    "Depresiye ni iki?",
+    "Numva mfite depresiye",
+    "Depresiye itera iki?",
+    "Ndumva mfite depresiye"
+  ],
+  "responses": [
+    "Depresiye ni indwara ikomeye itera umuntu kumva atishimye, kandi igahindura imitekerereze ye n'imikorere ye ya buri munsi. Ariko ishobora kuvurwa. Depresiye ituma umuntu atishimye cyangwa atagifite interesse mu bintu yakundaga. Ishobora gutuma umuntu agira ibibazo byinshi mu mubiri no mu bwenge kandi igahagarika ubushobozi bwo gukora neza.",
+    "Ndumva ibyo urimo kuvuga. Ese wakumbwira byinshi ku byo wiyumvamo?"
+  ]
+},
+{
+  "tag": "sad",
+  "patterns": [
+    "Ndumva ndi wenyine",
+    "Numva naniwe",
+    "Ndumva ntishimye",
+    "Nta muntu ufite",
+    "Ndumva ndi wenyine cyane"
+  ],
+  "responses": [
+    "Mbabariye kumva ibyo. Ndi hano kugirango nguhe ubufasha. Kuvuga ibyabaye birashobora kugufasha. Ese wambwira impamvu wiyumva utyo?",
+    "Ndi hano kugirango nkumve. Ese wayambwira impamvu wiyumva utyo?",
+    "Kuva ryari witangiye kwiyumva utyo?"
+  ]
+},
+{
+  "tag": "stressed",
+  "patterns": [
+    "Ndumva nafashwe n'umuhangayiko",
+    "Mfite stress nyinshi",
+    "Ndumva narengewe",
+    "Ndumva naruhagiwe cyane"
+  ],
+  "responses": [
+    "Utekereza ko ari iki kibitera?",
+    "Fata akanya wihumeke neza. Niba bishoboka, genda utambagira. Nywa amazi ahagije.",
+    "Wihe akanya ko kuruhuka. Wikomere cyane.",
+    "Mbabariye kumva ibyo. Ni iki kibitera?"
+  ]
+},
+{
+  "tag": "worthless",
+  "patterns": [
+    "Ndumva nta cyo mmariye",
+    "Nta muntu unkundaga",
+    "Nta kintu nshobora gukora",
+    "Nta cyo mmariye",
+    "Nta kintu kigifite agaciro"
+  ],
+  "responses": [
+    "Ni ibisanzwe kwiyumva utyo. Mbwira byinshi. Ni iki kindi uri gutekereza?",
+    "Reka tuganire byimbitse impamvu wiyumva utyo.",
+    "Ndashaka ko umeya ko utari wenyine muri ibi bitekerezo kandi ko hari abantu bashobora kugufasha. Ushobora guhindura uko wiyumva n'imitekerereze yawe ubishaka."
+  ]
+}
   ]
 }

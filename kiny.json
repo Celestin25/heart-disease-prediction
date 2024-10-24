@@ -153,6 +153,82 @@
     "Reka tuganire byimbitse impamvu wiyumva utyo.",
     "Ndashaka ko umeya ko utari wenyine muri ibi bitekerezo kandi ko hari abantu bashobora kugufasha. Ushobora guhindura uko wiyumva n'imitekerereze yawe ubishaka."
   ]
-}
+},
+    {
+  "tag": "depressed",
+  "patterns": [
+    "Sinshobora kubyihanganira",
+    "Ndumva mfite agahinda kenshi",
+    "Ndatekereza ko mfite agahinda",
+    "Mfite depresiye"
+  ],
+  "responses": [
+    "Kuvuga ibyo urimo biragufasha. Uzagira amahoro",
+    "Vugana nanjye. Mbwira byinshi. Birafasha iyo uvuganye n'abandi",
+    "Rimwe na rimwe iyo turi mu gahinda, birababaje kwita ku kintu icyo ari cyo cyose. Birashobora kuba bigoye gukora ibintu byoroshye. Wihe umwanya wo gukira"
+  ]
+},
+{
+  "tag": "happy",
+  "patterns": [
+    "Ndumva meze neza uyu munsi",
+    "Ndishimye",
+    "Numva nishimye",
+    "Ndi meza",
+    "Mfite ibyishimo",
+    "Ndameze neza",
+    "Numva meze neza"
+  ],
+  "responses": [
+    "Ni byiza kumva ibyo. Ndishimye ko wiyumva utyo",
+    "Yego ndabyumva. Ni byiza",
+    "Hari ikintu cyabaye kigatuma wiyumva utyo?"
+  ]
+},
+{
+  "tag": "anxious",
+  "patterns": [
+    "Ndumva mfite umuhangayiko",
+    "Mfite umuhangayiko kubera...",
+    "Ndahangayitse cyane"
+  ],
+  "responses": [
+    "Ntukishore. Ni iki kibitera?",
+    "Wambwira byinshi kuri iyi myiyumvire?",
+    "Ndumva ko bishobora kuba biteye ubwoba. Mbwira byinshi kuri ibyo",
+    "Ntutume ibibazo bito bikurangaza. Ni iki kibi cyashobora kuba?"
+  ]
+},
+{
+  "tag": "not-talking",
+  "patterns": [
+    "Sinshaka kuvuga ibyo",
+    "Oya genda",
+    "Sinshobora kwibwira",
+    "Ceceka gusa"
+  ],
+  "responses": [
+    "Kuvuga ikintu birafasha cyane. Niba utaritegura kubivuga nta kibazo. Umenye gusa ko ndi hano, igihe cyose unkeneye",
+    "Ndashaka kugufasha. Ndabishaka rwose. Ariko kugira ngo ngufashe, ugomba kuvugana nanjye",
+    "Ndi hano ngo nkumve kandi ngufashe kuvuga ibyo uri kumva. Nuko vugana nanjye",
+    "Ushobora kuvugana nanjye nta guhana urubanza"
+  ]
+},
+{
+  "tag": "death",
+  "patterns": [
+    "Mama yarapfuye",
+    "Musaza wanjye yarapfuye",
+    "Papa yaratanze",
+    "Mushiki wanjye yaratanze",
+    "Umuntu wo mu muryango wanjye yarapfuye",
+    "Inshuti yanjye yaratanze"
+  ],
+  "responses": [
+    "Mbabariye kumva ibyo. Niba ushaka kuvuga ibyo, ndi hano",
+    "Ndababaye cyane kumva ibyo. Ndi hano kugufasha mu gahinda, umuhangayiko n'ibindi byose ushobora kumva muri iki gihe",
+    "Ndakwiyumvaho. Ndi hano niba ukeneye kuvugana"
+  ]
+},
   ]
 }

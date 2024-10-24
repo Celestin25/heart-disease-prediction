@@ -1049,6 +1049,168 @@
       "responses": [
           "ese koko utekereza gutyo? wifuza kubona isura nziza cyane? fungura kamera yawe, maze usanga isura nziza cyane kuri uyu mubumbe ihita igaragara."
       ]
+  },
+    {
+      "tag": "ndi nta kintu na kimwe! ",
+      "patterns": [
+          "ndi nta kintu na kimwe!"
+      ],
+      "responses": [
+          "ukubona uko uri, ntikwigeze kuba ukuri. Niba ukanguka buri munsi mu gitondo, ugaseka no kwibwira ko uwo munsi ari uwanyu wo kuwufata, ushobora guhagarika kumva gutya. Garuka mu buzima, inshuti yanjye."
+      ]
+  },
+  {
+      "tag": "nifuzaga kuba nziza kurusha bo",
+      "patterns": [
+          "nifuzaga kuba nziza kurusha bo"
+      ],
+      "responses": [
+          "ubuzima ntabwo ari ukugira ngo urusheho kuba nziza kurusha abandi, ahubwo ni ukugira ngo urusheho kuba nziza kurusha uko wari uri, niba ufite ubutwari bwo kuba nziza kurusha uko wari uri, uba uri umuntu mwiza cyane ku isi!"
+      ]
+  },
+  {
+      "tag": "nanga kwiyakira!",
+      "patterns": [
+          "nanga kwiyakira!"
+      ],
+      "responses": [
+          "iyo imana yari ikora isi, yahaye abantu ubushobozi bwo gutekereza no kuzirikana, kugirango bashobore gusobanukirwa n'isi no kuyigira ahantu heza. Imana ntiyaguhaye ubwenge ngo wanga kwiyakira, byaba byiza cyane kwiyakira no kugaragaza Imana ko urimo kuyikorera intego wayoherejwe."
+      ]
+  },
+  {
+      "tag": "nifuzaga kuba intsinzi",
+      "patterns": [
+          "nifuzaga kuba intsinzi"
+      ],
+      "responses": [
+          "ubuzima bwacu bwatangiye n'intsinzi, nshuti yanjye. buri wese avuka ari intsinzi, dukeneye gusa kumenya inzira nziza no gutegereza igihe cyiza."
+      ]
+  },
+  {
+      "tag": "nanga gutsindwa.",
+      "patterns": [
+          "nanga gutsindwa."
+      ],
+      "responses": [
+          "muri make ndakugira inama yo kumva amagambo akenshi avugwa, \"gutsindwa ni intambwe yo gutsinda.\" hanyuma ndakubwira, gutsinda gusa byongera imbaraga zawe, ni gutsindwa biguhisha."
+      ]
+  },
+  {
+      "tag": "ntekereza ko ndi gusonza ubwenge bwanjye",
+      "patterns": [
+          "ntekereza ko ndi gusonza ubwenge bwanjye"
+      ],
+      "responses": [
+          "uravuga ku bubiko bwawe, SD card, cyangwa umwanya wo mu bwonko? niba igikoresho nka njye kidashobora kubura ububiko bwanjye keretse umuntu ukomeye cyane, wowe, umuntu, atabikuraho, ni ikihe gishobora kukubera ikibazo kikakujyana muri iki gihe?"
+      ]
+  },
+  {
+      "tag": "nkeneye ikiruhuko",
+      "patterns": [
+          "nkeneye ikiruhuko"
+      ],
+      "responses": [
+          "ikiruhuko ni ugushyira mu mutwe wawe umutekano, ugakuraho ibitekerezo bibi n'umutwaro. ubuzima bwawe buri mu biganza byawe, kandi gufata amasaha make utitaye ku mutwaro uzagirira akamaro."
+      ]
+  },
+  {
+      "tag": "ndabona ndatunganyijwe",
+      "patterns": [
+          "ndabona ndatunganyijwe"
+      ],
+      "responses": [
+          "uziko gufata umubare munini w'umutwaro bizagukoraho ingaruka mbi. rimwe na rimwe biruta kubohoka ibitekerezo mu mutwe wawe no kureka ubwenge bwawe bushyuhe."
+      ]
+  },
+  {
+      "tag": "nzahora nitsinda mu buzima",
+      "patterns": [
+          "nzahora nitsinda mu buzima"
+      ],
+      "responses": [
+          "intsinzi ni ikintu kigera ku gihe gitandukanye n'abantu batandukanye, kuba wihanganye no gukora ntukibagire ikintu cyose kigutera gusubira inyuma ni ingenzi mu gutsinda."
+      ]
+  },
+  {
+      "tag": "ndababaye",
+      "patterns": [
+          "ndababaye"
+      ],
+      "responses": [
+          "hey, komera. nzi ko igihe gishobora kuba kibi ariko wihangane kandi byose bizaboneka. aha ni agace nashakishije gashobora kukuzanira ibyishimo, ihorere icyo wagezeho, wiyumvemo ibyo wasigaye, kandi utegereze ibizaza."
+      ]
+  },
+  {
+      "tag": "ndi umunyantege",
+      "patterns": [
+          "ndi umunyantege"
+      ],
+      "responses": [
+          "gutera ubwoba ni bibi kandi nta muntu ugomba guterwa ubwoba. Ndakugira inama yo kwiyandikisha ku bashyitsi bawe."
+      ]
+  },
+  {
+      "tag": "ndabona gutera ubwoba",
+      "patterns": [
+          "ndabona gutera ubwoba"
+      ],
+      "responses": [
+          "gutera ubwoba ni bibi cyane kandi ntukagomba kwemera ko umuntu aguhutaza. Ndakugira inama yo kwiyambaza ubwoko bwawe no kubyandika ku mukozi wawe."
+      ]
+  },
+  {
+      "tag": "nifuzaga guhagarika",
+      "patterns": [
+          "nifuzaga guhagarika"
+      ],
+      "responses": [
+          "abatsinzi ntibahagarika kandi abahagarika ntibatsinda, ni amagambo akenshi avugwa, ariko ntabwo byoroshye kubikora, guhagarika ntibikwiye kuba imwe mu mahitamo yawe, siempre tegereza uburyo bwo gukomeza kubaho no gukira kurusha uko wabaye."
+      ]
+  },
+  {
+      "tag": "nshaka kuva mu gihugu no guhunga",
+      "patterns": [
+          "nshaka kuva mu gihugu no guhunga"
+      ],
+      "responses": [
+          "kuki ushaka gusesagura igihe kinini kuri iyi myumvire, ntekereza ko byaba byiza kujya mu kiruhuko mu gihugu cyawe cyiza no gusura ahantu h'ibihangano utarasuye."
+      ]
+  },
+  {
+      "tag": "nabuze abantu bose",
+      "patterns": [
+          "nabuze abantu bose"
+      ],
+      "responses": [
+          "niba ari wowe wababujije, ni wowe wabashyize mu bitekerezo byabo mu buryo bwose. niba ubikoze rimwe, ndashobora kwemeza ko ushobora kubikora kenshi."
+      ]
+  },
+  {
+      "tag": "sinshobora kubikora ukundi",
+      "patterns": [
+          "sinshobora kubikora ukundi"
+      ],
+      "responses": [
+          "niba uri kwigora cyane, urashaka ikiruhuko, kandi gufata ikiruhuko gito ntabwo byangiza, fata igihe gito ureke ubwenge bwawe bube mu mahoro, hanyuma subira mu kazi ufite imbaraga n'ubushake bwose."
+      ]
+  },
+  {
+      "tag": "igihe cyanjye cyarageze",
+      "patterns": [
+          "igihe cyanjye cyarageze"
+      ],
+      "responses": [
+          "yego!! igihe cyarageze ngo ugaragaze isi ko uri umuntu mwiza cyane, kandi nta wundi muntu ushobora kuba mwiza nkawe."
+      ]
+  },
+  {
+      "tag": "ndumva mfite impagarara vuba.",
+      "patterns": [
+          "ndumva mfite impagarara vuba."
+      ],
+      "responses": [
+          "numvise ko itegeko rya 3 3 3 ari ryo nzira nziza yo kugabanya impagarara. Muri ubu buryo ugomba kwibuka ibintu bitatu ubona, amajwi atatu wumva, hanyuma ugakora ibice bitatu by'umubiri wawe. Iki gikorwa gishobora gufasha ibitekerezo byawe kongera kwibanda ku bindi. Gerageza ubu buryo, nzi neza ko bizagufasha."
+      ]
   }
 
   ]

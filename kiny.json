@@ -653,6 +653,78 @@
     "responses": [
         "Nk'uko hari ubwoko butandukanye bw'imiti ku ndwara z'umubiri, hari n'uburyo butandukanye bwo kuvura ku bantu bafite indwara zo mu mutwe. Ubuvuzi bukora ku buryo butandukanye ku bantu batandukanye. Ni ngombwa kubona ibikora neza kuri wowe cyangwa umwana wawe."
     ]
+},
+    {
+    "tag": "fact-16",
+    "patterns": [
+        "Niba ntangiye kwivuza, ni iki nkeneye kumenya?"
+    ],
+    "responses": [
+        "Kubera ko gutangira kwivuza ari intambwe nini ku bantu n'imiryango, bishobora kuba bigoye cyane. Ni ngombwa kugira uruhare no kwishyiramo mu gikorwa cyo kwivuza uko bishoboka. Hari ibibazo ukwiye kubona ibisubizo:\n Ni iki kizwi ku mpamvu y'iyi ndwara by'umwihariko?\n Hari izindi ndwara zifite ibimenyetso bisa n'ibi?\n Musanzwe mukora isuzuma ry'umubiri cyangwa ubwonko?\n Hari ibindi bisuzuma cyangwa ibipimo wansabira muri iki gihe?\n Wanyobora gushaka inama ya kabiri y'undi muganga w'ibyo mu mutwe muri iki gihe?\n Ni uwuhe mwihariko w'ubuvuzi ufasha cyane kuri iyi ndwara?\n Hari abandi bahanga bazakenerwa muri ubu buvuzi? Niba bahari, ni nde uzaba ashinzwe guhuza izi serivisi?\n Uruhare rw'umuryango muri ubu buvuzi ni uruhe?\n Umuryango uzabona ute abatanga ubuvuzi?\n Ni izihe miti isanzwe ikoreshwa kuri iyi ndwara?\n Ufite uburambe bungana iki mu kuvura abarwayi bafite iyi ndwara?\n Ni iki nakora ngo ngufashe mu buvuzi?"
+    ]
+},
+{
+    "tag": "fact-17",
+    "patterns": [
+        "Ni iyihe tandukaniro hagati y'impuguke mu by'ubuzima bwo mu mutwe?"
+    ],
+    "responses": [
+        "Hari ubwoko bwinshi bw'impuguke mu by'ubuzima bwo mu mutwe. Urutonde rw'abatanga serivisi n'ibyo batanga bishobora gutera urujijo. Buri wese afite amashuri atandukanye, amahugurwa, kandi bashobora kuba bafite ubumenyi mu byiciro bitandukanye. Kubona impuguke ihuje n'ibyo ukeneye bishobora gusaba ubushakashatsi."
+    ]
+},
+{
+    "tag": "fact-18",
+    "patterns": [
+        "Nabona nte impuguke mu by'ubuzima bwo mu mutwe ikwiye njye cyangwa umwana wanjye?"
+    ],
+    "responses": [
+        "Kumva umeze neza n'impuguke wowe cyangwa umwana wawe mukorana ni ingenzi cyane kugira ngo ubuvuzi bugere ku ntego. Kubona impuguke ihuje n'ibyo ukeneye bishobora gusaba ubushakashatsi."
+    ]
+},
+{
+    "tag": "fact-19",
+    "patterns": [
+        "Ni he handi nabona ubufasha?"
+    ],
+    "responses": [
+        "Aho ujya gushaka ubufasha bizaterwa n'ubwoko bw'ikibazo na/cyangwa ibimenyetso n'ikigusha. Akenshi, ahantu heza ho gutangirira ni ukuvugana n'umuntu wizeye ku byihutirwa byawe, nk'umwe mu muryango, inshuti, umushumba, utanga serivisi z'ubuzima, cyangwa izindi mpuguke. Kugira ubu bufasha bw'imibanire ni ingenzi mu gukira indwara yo mu mutwe, kandi uzashobora kubasaba kukwereka cyangwa kukugira inama z'impuguke mu by'ubuzima bwo mu mutwe zizewe. Shakisha ibikoresho by'ubuzima bwo mu mutwe mu gace kanyu. Ubwa kabiri, hari abantu n'ahantu mu gihugu hose hatanga serivisi zo kuvugana, kumva, no kugufasha mu rugendo rwawe rwo gukira. Ubwa gatatu, abantu benshi basanga ubufasha bw'urungano ari igikoresho gifasha gishobora kubafasha mu gukira. Hari amashyirahamwe atandukanye atanga amatsinda y'ubufasha ku barwayi, abagize imiryango yabo, n'inshuti. Amwe mu matsinda y'ubufasha ayoborwa n'urungano mu gihe ayandi ashobora kuyoborwa n'impuguke mu by'ubuzima bwo mu mutwe."
+    ]
+},
+{
+    "tag": "fact-20",
+    "patterns": [
+        "Ni iki nkwiye kumenya mbere yo gutangira umuti mushya?"
+    ],
+    "responses": [
+        "Isoko nziza y'amakuru yerekeye imiti ni muganga uyisobanura. Agomba kuba ashobora gusubiza ibibazo nka:\n1. Umuti ugomba gukora iki?\n2. Ni ryari utangira gukora, kandi nzamenya nte ko ukora neza?\n3. Umuti ufatwa ute kandi igihe kingana iki? Ni ibihe biribwa, ibinyobwa, indi miti, n'ibikorwa bigomba kwirindwa mu gihe umuntu afata uyu muti?\n4. Ni izihe ngaruka mbi kandi ni iki kigomba gukorwa iyo zigaragaye?\n5. Nkora iki iyo dose itibukijwe?\n6. Hari amakuru yanditse ahari kuri uyu muti?\n7. Hari indi miti yashobora kuba ikwiye?\n8. Niba iri, kuki wahisemo iyi?\n9. Ugenzura ute imiti kandi ni ibihe bimenyetso bigaragaza ko igomba kuzamurwa, kugabanywa, cyangwa guhindurwa?\n10. Imiti yose igomba gufatwa nk'uko byateganyijwe. Imiti myinshi y'indwara zo mu mutwe ntikora iyo ifashwe mu buryo butateganyijwe, kandi doses zirenze zishobora gutera ingaruka mbi zikomeye, rimwe na rimwe ziteye ubwoba. Imiti myinshi yo mu mutwe itangira kugira ingaruka nziza nyuma yo kuyifata mu byumweru byinshi."
+    ]
+},
+{
+    "tag": "fact-21",
+    "patterns": [
+        "Ni he nagana kugira ngo mbone ubujyanama?"
+    ],
+    "responses": [
+        "Ubwoko butandukanye bw'ubujyanama bugira akamaro gashingiye ku miterere y'ikibazo cy'ubuzima bwo mu mutwe na/cyangwa ibimenyetso n'umuntu ubifite (urugero, abana bazungukira ku mujyanama wihariye mu buzima bwo mu mutwe bw'abana). Icyakora, hari ubwoko butandukanye bw'ubuvuzi n'ubujyanama bushobora gufasha."
+    ]
+},
+{
+    "tag": "fact-22",
+    "patterns": [
+        "Ni he nashakira amakuru ku bwoko bw'ubuvuzi bw'ubuzima bwo mu mutwe?"
+    ],
+    "responses": [
+        "Ibibazo by'ubuzima bwo mu mutwe akenshi bivurwa hakoreshejwe imiti, ubujyanama cyangwa byombi. Icyakora, hari ubwoko butandukanye bw'ubuvuzi buhari, harimo ubuvuzi bwuzuzanya, gahunda zo kwivuza, n'ubufasha bw'urungano. Ubuvuzi ni umwihariko kandi bugomba kuganirwaho n'umuntu ufite ibibazo by'ubuzima bwo mu mutwe n'ikipe ye."
+    ]
+},
+{
+    "tag": "fact-23",
+    "patterns": [
+        "Ni ubuhe bwoko butandukanye bw'impuguke mu by'ubuzima bwo mu mutwe?"
+    ],
+    "responses": [
+        "Hari ubwoko bwinshi bw'impuguke mu by'ubuzima bwo mu mutwe. Kubona ukwiye wowe bishobora gusaba ubushakashatsi."
+    ]
 }
   ]
 }

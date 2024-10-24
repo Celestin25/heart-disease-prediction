@@ -860,6 +860,96 @@
 "responses": [
 "Igihugu gifite umunezero muke cyane ni Afuganistani, aho umuntu umwe mu bantu batanu arengeje abagira iyi ndwara. Igihugu gifite umunezero muke muke cyane ni Ubuyapani, gifite ikigero cy'abarwaye kingana na 2.5%."
 ]
+},
+    {
+"tag": "Ni iyihe gihugu gifite ikigero cyo kubura umunezero gito?",
+"patterns": [
+"ni iyihe gihugu gifite ikigero cyo kubura umunezero gito?"
+],
+"responses": [
+"Igihugu gifite umunezero muke cyane ni Afuganistani, aho umuntu umwe mu bantu batanu arengeje abagira iyi ndwara. Igihugu gifite umunezero muke muke cyane ni Ubuyapani, gifite ikigero cy'abarwaye kingana na 2.5%."
+]
+},
+{
+"tag": "Ese ishuri ritera umunezero muke?",
+"patterns": [
+"ese ishuri ritera umunezero muke?"
+],
+"responses": [
+"Ishuri si ryo ritera gusa umunezero muke, ahubwo umunezero muke na wo ushobora kubangamira amasomo. Byongeye kandi, ubushakashatsi bugaragaza ko 75% by'ibibazo byose byo mu mutwe bitangira mbere y'imyaka 24. Kubw'ibyo, igihe cyo kwiga muri kaminuza ni igihe cy'ingenzi cyo gusobanukirwa no kuvuga ku buzima bwo mu mutwe bw'abakiri bato."
+]
+},
+{
+"tag": "Ni izihe mpamvu z'umubiri zitera umunezero muke?",
+"patterns": [
+"ni izihe mpamvu z'umubiri zitera umunezero muke?"
+],
+"responses": [
+"Nta mpamvu imwe itera umunezero muke; ahubwo ni ihuriro ry'umuhangayiko n'amahirwe umuntu afite yo kugira umunezero muke. Ubushobozi bwo kugira umunezero muke bushobora kuba bwarazwe. Izindi mpamvu z'umubiri zitera umunezero muke zirimo indwara z'umubiri, gusaza n'igitsina."
+]
+},
+{
+"tag": "Umunezero muke ugira izihe ngaruka ku isi?",
+"patterns": [
+"umunezero muke ugira izihe ngaruka ku isi?"
+],
+"responses": [
+"Umunezero muke ni imwe mu mpamvu z'ingenzi zitera ubumuga ku isi kandi ni kimwe mu bintu byingenzi biteza umutwaro ku isi yose. Abagore barushijeho kugira umunezero muke kurusha abagabo. Umunezero muke ushobora gutuma abantu biyahura. Hari ubuvuzi bw'ihinduka ry'imyifatire n'imiti bikora neza ku munezero muke uri ku rwego rwo hagati n'ukabije."
+]
+},
+{
+"tag": "Ni irihe bara rifite ikigero cyo kubura umunezero kinini?",
+"patterns": [
+"ni irihe bara rifite ikigero cyo kubura umunezero kinini?"
+],
+"responses": [
+"Umunezero muke wari uruta ayandi mu banyahisipanike (10.8%), hakurikiraho abanyamerika b'abazungu (8.9%) n'abazungu (7.8%). Amahirwe yo kugira indwara zo kubura umunezero mu banyahisipanike bakuze yari 44% arenze ay'abazungu (or = 1.44; 95% ci = 1.02, 2.04), bigaragaza ikigero kinini cy'umunezero muke ukabije."
+]
+},
+{
+"tag": "Ubwoba n'umunezero muke bisobanura iki?",
+"patterns": [
+"ubwoba n'umunezero muke bisobanura iki?"
+],
+"responses": [
+"Indwara z'umunezero muke n'ubwoba ziratandukanye, ariko abantu bafite umunezero muke akenshi bagira ibimenyetso bisa n'iby'indwara y'ubwoba, nk'umutima uhagaze, kurakara, n'ibibazo byo kuryama no kwita ku bintu. Ariko buri ndwara ifite impamvu zayo bwite n'ibimenyetso byayo by'amarangamutima n'imyitwarire."
+]
+},
+{
+"tag": "Kuryama cyane bitera umunezero muke?",
+"patterns": [
+"kuryama cyane bitera umunezero muke?"
+],
+"responses": [
+"Ni ngombwa kwibuka ko kuryama cyane ari ikimenyetso gishoboka cy'umunezero muke kandi ko kuryama cyane bitabitera. Ariko bishobora kongera no kurushaho kuzamura ibimenyetso by'umunezero muke."
+]
+},
+{
+"tag": "Kubura ibitotsi bishobora gutuma wumva utishimye?",
+"patterns": [
+"kubura ibitotsi bishobora gutuma wumva utishimye?"
+],
+"responses": [
+"Ubushakashatsi bugaragaza ko abantu bababujwe ibitotsi bagaragaza kwiyongera kw'amarangamutima mabi (uburakari, kurakara, agahinda) no kugabanuka k'amarangamutima meza. Kandi kubura ibitotsi akenshi ni ikimenyetso cy'indwara z'amarangamutima, nk'umunezero muke n'ubwoba."
+]
+},
+{
+"tag": "Umunezero muke ni ingaruka ya diyabete?",
+"patterns": [
+"umunezero muke ni ingaruka ya diyabete?"
+],
+"responses": [
+"Niba ufite diyabete - ubwoko bwa 1 cyangwa 2 - ufite amahirwe menshi yo kugira umunezero muke. Kandi niba ufite umunezero muke, ushobora kugira amahirwe menshi yo kugira diyabete y'ubwoko bwa 2. Inkuru nziza ni uko diyabete n'umunezero muke bishobora kuvurwa icyarimwe."
+]
+},
+{
+"tag": "Isukari nke mu maraso ishobora gutuma umuntu atekereza kwiyahura?",
+"patterns": [
+"isukari nke mu maraso ishobora gutuma umuntu atekereza kwiyahura?"
+],
+"responses": [
+"Isano igaragara hagati y'ingano y'isukari mu maraso, kwanga insiluline n'imyitwarire yo kwiyahura bigaragaza ko ibibazo mu mikorere y'isukari bifitanye isano n'ibitekerezo byo kwiyahura n'kugerageza kwiyahura."
+]
 }
   ]
 }
